@@ -1,0 +1,137 @@
+/* Colors */
+/* Rainy theme 5 -Green Digitalization Course and Students Apps-:
+Navbar (background): #8bbbd9
+Navbar (a hover): #466fa6
+Navbar (logo): #568c63
+Navbar (a menu): #2a4359
+Footer (background): #8bbbd9
+*/
+
+/* Google fonts Roboto  */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+
+/* CSS utilities */
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  
+ 
+}
+body {
+  font-family: 'Roboto', sans-serif;
+  background: #fff;
+  line-height: 1.6;
+}
+.container {
+    max-width: 1500px;
+    margin: 0 auto;
+    
+}
+ul { 
+  list-style: none;
+  font-size: 400;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+h1, h2 {
+  font-weight: 400;
+  line-height: 1.2;
+}
+p {
+  margin: 10px 0;
+  font-size: 18px;
+}
+img {
+  width: 100%;
+}
+/* Navbar  */
+
+.navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 70px;
+  align-items: center;
+  padding: 0 0px;
+
+  
+}
+.navbar a {
+  color: #2a4359;
+  padding: 10px 20px;
+  margin: 0 5px;
+  font-size: 20px;
+  text-decoration: none;
+  justify-content: end;
+  
+}
+.navbar a:hover{
+  border-bottom: #2a4359 4px solid;
+}
+.navbar ul {
+  display: flex;
+  flex-direction: row;
+ 
+}
+.navbar .logo {
+  font-weight: 400;
+}
+.text-logo {
+  color: #568c63;
+}
+/*-------------------Footer----------------------------------------  */
+
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  height: 300px;
+  align-items: center;
+  padding: 0 0px;
+}
+
+.footer_brand{
+  display: flex;
+  flex-direction: row;
+  height: 100px;
+}
+
+
+.footer__bottom{
+  max-width: 1200px;
+  margin: 60px auto 0;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,0.18);
+
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,0.6);
+  text-transform: uppercase;
+  
+}
+
+/* Media query */
+@media(max-width:768px){
+  .navbar {
+    height: 160px;
+    flex-direction: column;
+  }
+  .navbar a {
+    font-size: 15px;
+    padding: 5px 20px;
+  }
+  .navbar ul {
+    display: flex;
+    flex-direction: column;
+  }
+  .navbar a:hover{
+    color: #568c63;
+    border-bottom: #2a4359 2px solid;
+  }
+}

@@ -1,0 +1,39 @@
+.carbon{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    padding: 80px 140px;
+    height: 700px;
+    background-color: aliceblue;
+}
+
+.infoCal{
+
+}
+
+.transportMethod{
+    border: 1px solid red;
+    border-radius: 10px;
+    padding: 30px;
+    background-color: whitesmoke;
+    width: 500px;
+}
+
+.transportGrid{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: aquamarine;
+    padding: 20px;
+    
+}
+
+.infoCal h1{
+    font-size: 60px;
+    font-family: 'Times New Roman', Times, serif;
+}
+

@@ -1,0 +1,260 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<!-- Header -->
+
+<section class="header"> 
+
+  <!-- Sky bakgrunn-->
+  <div class="cloud">
+    <img src="{{ url_for('static', filename='icons/cloud1.png') }}" alt="" style="--i:1">
+    <img src="{{ url_for('static', filename='icons/cloud2.png') }}" alt="" style="--i:2">
+    <img src="{{ url_for('static', filename='icons/cloud3.png') }}" alt="" style="--i:3">
+    <img src="{{ url_for('static', filename='icons/cloud4.png') }}" alt="" style="--i:4">
+    <img src="{{ url_for('static', filename='icons/cloud5.png') }}" alt="" style="--i:5">
+  </div>
+  
+
+  <div class="box-contantAbout">
+    <h1 class="abouth1"> About <br> GreenCarbon</h1>
+  </div>
+  
+    <div class="box-moreContentAbout">
+      <p> Empowering smarter climate decisions through data.</p>
+    </div>
+
+    
+
+</section>
+
+<!-- Our mission key factors -->
+<section class="mission-section"> 
+
+  <h1 class="missionh1"> Reducing <span style="color:teal; text-shadow: 2px 2px rgba(0,0,0,0.3);">carbon emisson</span> is our mission</h1>
+
+
+  <div class="mission"> 
+
+    <div class="boxAbout boxReduce"> 
+      <div class="gra">
+        <i class="bi bi-globe-europe-africa-fill" style="font-size: 100px; text-align: center;"></i>
+        <h3 class="headingMission"> Measure</h3>
+        <p class="missionParagraf">We calculate your carbon emissions based on <span style="color:teal;">transport and energy usage.</span></p>
+      </div>
+    </div>
+    <div class="boxAbout box2">
+      <div class="gra">
+        <i class="bi bi-bar-chart-fill" style="font-size: 100px;text-align: center;"></i>
+        <h3 class="headingMission"> Analyze</h3>
+        <p class="missionParagraf">We give insights into where your biggest <span style="color:teal;"> emissions come from.</span></p>
+      </div>
+    </div>
+    <div class="boxAbout box3"> 
+      <div class="gra">
+        <i class="bi bi-recycle" style="font-size: 100px;"></i>
+        <h3 class="headingMission"> Reduce</h3>
+        <p class="missionParagraf">We suggest concrete actions to lower your <span style="color:teal;">environmental impact. </span></p>
+      </div>
+    </div>
+
+  </div>
+
+
+
+</section>
+
+
+<!-- Why it matters-->
+
+<section class="sectionWhy">
+  <div class="containerWhy">
+    <div class="picWhy">
+      <img src="{{ url_for('static', filename='icons/whyItMatters.png') }}">
+    </div>
+
+    <div class="infoWhy"> 
+      <h3 class="whyHead"> <span style="color: teal">WHY </span>it matters</h3>
+      <p>Climate change is one of the defining challenges of our time. <br>By making carbon data transparent and understandable, <br> we empower smarter, more responsible choices. </p>
+
+    </div>
+  </div>
+
+</section>
+
+
+<!-- Introductions -->
+<section class="intro">
+
+  <div class="introHeader">
+    <h1 class="devh1"> Meet our <span style="color:teal; text-shadow: 2px 2px rgba(0,0,0,0.3);"> team</span></h1>
+  </div>
+ 
+
+  <div class="row">
+    <div class="dev">
+      <img src="static/icons/protrett.avif" width="300" height="300">
+      <h3> Elena Hanusova</h3>
+      <p> Bachelor student of Business Administration at LUISS University <br><br><br> </p>
+      <button class="linkedIn">LinkedIN</button>
+    </div>
+    <div class="dev">
+      <img src="static/icons/protrett.avif" width="300" height="300">
+      <h3> Sabrin Adan Hassan</h3>
+      <p>Bachelor student of Economics and Business Administration at Norwegian School of Economics.</p>
+      <button class="linkedIn">LinkedIN</button>
+
+    </div>
+    <div class="dev">
+      <img src="static/icons/protrett.avif" width="300" height="300">
+      <h3>Annamari Oroshazi</h3>
+      <p> Jeg studerer økonomi og administrasjon ved NHH. </p>
+      <button class="linkedIn">LinkedIN</button>
+
+    </div>
+    
+  </div>
+
+  <div class="row1">
+    <div class="dev1">
+      <img src="static/icons/protrett.avif" width="300" height="300">
+      <h3>Lan Ngoc Nguyen</h3>
+      <p> Jeg studerer økonomi og administrasjon ved NHH. </p>
+      <button class="linkedIn">LinkedIN</button>
+    </div>
+    <div class="dev1">
+      <img src="static/icons/protrett.avif" width="300" height="300">
+      <h3>Nabil Kuzbari</h3>
+      <p> Jeg studerer økonomi og administrasjon ved NHH. </p>
+      <button class="linkedIn">LinkedIN</button>
+    </div>
+    <div class="dev1">
+      <img src="static/icons/protrett.avif" width="300" height="300">
+      <h3>Adam Silhanek</h3>
+      <p> Jeg studerer økonomi og administrasjon ved NHH. </p>
+      <button class="linkedIn">LinkedIN</button>
+      
+    </div>
+    <div class="dev1">
+      <img src="static/icons/protrett.avif" width="300" height="300">
+      <h3>Mikkel Willoch</h3>
+      <p> Jeg studerer økonomi og administrasjon ved NHH. </p>
+      <button class="linkedIn">LinkedIN</button>
+      
+    </div>
+ 
+
+  </div>
+
+</section>
+
+<!-- Call to action -->
+<section> 
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Header -->
+
+<!--
+<section class="section_header_home_video">
+      <video class="header-video" autoplay muted loop playsinline>
+          <source src="{{ url_for('static', filename='icons/AboutUs.mp4') }}" type="video/mp4">
+      </video>
+</section>
+-->
+
+
+<!-- Developers -->
+ <!--
+<section class="section_developers">
+  <div class="container">
+
+    <div class="developers" style="display:block;">
+      <h1 style="text-align:center;"> Our Team</h1>
+      <p>
+        Our team of economists and developers ... Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia, ut? Praesentium quidem sunt perspiciatis doloremque fugiat nesciunt quaerat ullam, pariatur iure unde ratione ipsum adipisci repellendus, repudiandae hic sit, temporibus molestias corrupti aut soluta sequi! Architecto deleniti expedita nisi repudiandae enim eum quas odit facilis placeat neque porro, animi incidunt consectetur. Maiores ab saepe tempora, iure asperiores beatae suscipit cum ipsum, rerum doloremque reprehenderit dolorum debitis, aliquam quasi. Maiores corporis fuga quasi nesciunt dolor iste, inventore necessitatibus unde!
+      </p>      
+    </div>
+
+    <div class="developers">
+        <div class="box">
+          <img src="https://randomuser.me/api/portraits/men/10.jpg" alt="" style="border-radius: 50%; width:200px;">
+          <h3>Developer 1</h3>
+          <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quia repellat omnis? Odit enim hic atque dolorem iste natus inventore perspiciatis vitae dolore animi veritatis aut nemo unde similique, officia reiciendis ex architecto voluptates soluta ab tempore facilis quisquam cum.
+          </p>
+          <div class="container_buttons_developers">
+            <a class="btn_developers" href="#"  target="_blank">Curriculum</a>
+          </div> 
+        </div>
+        <div class="box">
+          <img src="https://randomuser.me/api/portraits/women/11.jpg" alt="" style="border-radius: 50%; width:200px;">
+          <h3>Developer 2</h3>
+          <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quia repellat omnis? Odit enim hic atque dolorem iste natus inventore perspiciatis vitae dolore animi veritatis aut nemo unde similique, officia reiciendis ex architecto voluptates soluta ab tempore facilis quisquam cum.
+          </p>
+          <div class="container_buttons_developers">
+            <a class="btn_developers" href="#"  target="_blank">Curriculum</a>
+          </div> 
+        </div>           
+        <div class="box">
+          <img src="https://randomuser.me/api/portraits/men/12.jpg" alt="" style="border-radius: 50%; width:200px;">
+          <h3>Developer 3</h3>
+          <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quia repellat omnis? Odit enim hic atque dolorem iste natus inventore perspiciatis vitae dolore animi veritatis aut nemo unde similique, officia reiciendis ex architecto voluptates soluta ab tempore facilis quisquam cum.
+          </p>
+          <div class="container_buttons_developers">
+            <a class="btn_developers" href="#"  target="_blank">Curriculum</a>
+          </div> 
+        </div>     
+    </div>
+
+    <div class="developers">
+      <div class="box2">
+        <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="" style="border-radius: 50%; width:200px;">
+        <h3>Developer 4</h3>
+        <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quia repellat omnis? Odit enim hic atque dolorem iste natus inventore perspiciatis vitae dolore animi veritatis aut nemo unde similique, officia reiciendis ex architecto voluptates soluta ab tempore facilis quisquam cum.
+        </p>
+        <div class="container_buttons_developers">
+          <a class="btn_developers" href="#"  target="_blank">Curriculum</a>
+        </div> 
+      </div>
+      <div class="box2">
+        <img src="https://randomuser.me/api/portraits/women/13.jpg" alt="" style="border-radius: 50%; width:200px;">
+        <h3>Developer 5</h3>
+        <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quia repellat omnis? Odit enim hic atque dolorem iste natus inventore perspiciatis vitae dolore animi veritatis aut nemo unde similique, officia reiciendis ex architecto voluptates soluta ab tempore facilis quisquam cum.
+        </p>
+        <div class="container_buttons_developers">
+          <a class="btn_developers" href="#"  target="_blank">Curriculum</a>
+        </div> 
+      </div>           
+      <div class="box2">
+        <mg src="https://randomuser.me/api/portraits/women/13.jpg" alt="" style="border-radius: 50%; width:200px;">
+        <h3>Developer 6</h3>
+        <p>  Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla quia repellat omnis? Odit enim hic atque dolorem iste natus inventore perspiciatis vitae dolore animi veritatis aut nemo unde similique, officia reiciendis ex architecto voluptates soluta ab tempore facilis quisquam cum.
+        </p>
+        <div class="container_buttons_developers">
+          <a class="btn_developers" href="#"  target="_blank">Curriculum</a>
+        </div> 
+
+      </div>     
+  </div>
+
+  </div>          
+</section>
+
+-->
+
+
+
+{% endblock content %}

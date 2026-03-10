@@ -1,0 +1,277 @@
+.header{                 
+    background-image: url("icons/aboutUs.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-bottom: 2px solid black;
+    overflow: auto;
+    position: relative;
+    min-height: 100vh;
+    
+}
+
+.header::before{
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.35); /* mørkt lag */
+    z-index: 0;
+}
+
+.box-contantAbout{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 200px;
+    position: relative;
+    z-index: 2;
+ 
+}
+
+.abouth1{
+    text-align: center;
+    font-size: 100px;
+    color: white;
+    font-weight: bold;
+
+}
+
+.box-moreContentAbout{
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.box-moreContentAbout p{
+    color: white; 
+    font-size: 24px;
+    text-shadow: 5px 5px 5px lightgray;
+}
+
+/* Bakgrunnen for section header*/
+.cloud{
+    overflow: hidden;
+}
+.cloud img{
+    animation: cld calc(8s * var(--i)) linear infinite;
+    opacity: .6;
+    max-width: 100%;
+    position: absolute;
+    bottom: 0px;
+    z-index: 2;
+    
+}
+@keyframes cld{
+    5%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(100%);
+    }
+}
+
+
+/* ---------------- our mission----------------------*/
+
+.mission-section{
+  position: relative;      /* viktig: så skyene holder seg i denne seksjonen */
+  overflow: hidden;        /* så skyer ikke “stikker ut” */
+  background: #f8faf9;
+  padding: 120px 20px;
+}
+
+.missionh1{
+    text-align: center;
+    padding: 20px;
+}
+
+
+.mission{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+}
+
+
+
+.boxAbout{
+    display: flex;
+    position: relative;
+    width: 400px;
+    height: 400px;
+    padding: 10px;
+    gap: 10px;
+    
+
+}
+
+.boxReduce{
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0, 128, 128, 0.4);
+}
+
+.gra{
+    position: absolute;
+    left:0;
+    top: 0;
+    width: 400px;
+    height: 150px;
+    background: linear-gradient(135deg, #1e8c86, #67c8a4);
+    text-align: center;
+    
+   
+}
+
+
+.box2{
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0, 128, 128, 0.4);
+}
+
+.box3{
+    background-color: white;
+    box-shadow: 0 10px 30px rgba(0, 128, 128, 0.4);
+}
+
+
+.line{
+    border: 1px solid teal;
+    margin-top: 80px;
+    
+}
+
+.headingMission{
+    text-align: center;
+    font-size: 24px;
+    color: teal;
+    font-weight: bold;
+    padding: 20px;
+}
+
+
+.missionParagraf{
+    color: black; 
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+}
+
+
+/* ------------------ Why it matters -------------------*/
+.sectionWhy{
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding: 100px 0;
+}
+.containerWhy{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    padding: 20px 20px;
+}
+.picWhy{
+    height: 550px;
+    width: 700px;
+
+}
+
+.infoWhy p{
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    padding: 10px;
+    line-height: 50px;
+}
+.whyHead{
+    font-size: 40px;
+    font-weight: bold;
+}
+
+
+/* --------------------Introduction ---------------*/
+
+.intro{
+    padding: 120px 20px;
+    background: #f8faf9;
+}
+
+.devh1{
+    text-align:center;
+    padding: 20px;
+    font-size: 45px; 
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+
+}
+
+.row{
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; 
+    gap: 30px;
+}
+
+.row1{
+    display: flex; 
+    align-items: center;
+    justify-content:center;
+    flex-wrap: wrap; 
+    gap: 15px;
+    padding: 15px;
+}
+
+
+.dev, .dev1{
+  width: 280px;
+  height: auto;                
+  background: white;           
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+
+
+.dev:hover, .dev1:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+}
+
+.dev img, .dev1 img{
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto 18px;
+}
+
+
+.dev h3, .dev1 h3{
+  margin: 10px 0 6px;
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  
+}
+
+.linkedIn{
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    background-color: teal;
+    color: white;
+    border-color: teal;
+}
+
+.linkedIn:hover{
+    background-color: lightseagreen;
+    color: black;
+    
+}
+
+
+
+

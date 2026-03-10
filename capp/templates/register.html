@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block content %}
+  
+<!-- Header -->
+<section class="section_header_user">
+    <div class="container">
+    <header class="page-header">
+        <div>
+            <h1> Register <span style="color:teal"> Here </span></h1>
+        </div>
+        <form action="/submit" method="POST">
+            <div class="input-group">
+            <input type="email" name="email" class="form-control" placeholder="Enter your email" required>
+            </div>
+        </form>
+        <form action="/submit" method="POST">
+            <div class="input-group">
+            <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+            </div>
+        </form>
+        <button class="button" type="submit">Submit</button>
+     </div>
+</section> 
+
+{% endblock content %}
