@@ -30,7 +30,11 @@
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='methodology.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='user.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='aboutUs.css') }}">
-
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='register.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='entry.css') }}">
+      
+    
 
       <!-- To activate media queries in devices -->
       <meta name="viewport" content="user-scalable=yes, width=device-width, initial-scale=1">
@@ -42,7 +46,7 @@
         {% endif %}
         
     </head>
-    <body>
+    <body id="page-top">
         <section class="section_navbar">
          <div class="container"> 
             <div class="navbar">
@@ -65,7 +69,10 @@
                       <a href="{{url_for('aboutUs.aboutUs_home')}}">About Us</a>
                     </li>
                     <li>
-                        <a href="{{url_for('user.user_home')}}">User</a>
+                        <a href="{{url_for('user.register_home')}}"> <i class="fa-solid fa-user-plus"></i></a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('user.login_home')}}"><i class="fa-solid fa-right-to-bracket"></i></a>
                     </li>
                     
                 </ul>
@@ -78,33 +85,44 @@
 
         <section class="section_footer">
           <div class="container">
-
-
             <div class="footer">
-              <h1>
-                Carbon App 
-                <a href="#">
-                  <i class="fa-solid fa-circle-up" style="color: #568c63"></i>
-                </a>
-              </h1>
-              
-              <!-- Venstre -->
-            <div class="footer_brand">
-              <h3>Grieg Group</h3>
-              <p>
-                We are Grieg, a family-owned group of companies which originates from a long and proud maritime
-                tradition. We are counting 1843 colleagues, working within seafood, shipping, maritime innovation,
-                and investments.
-              </p>
+              <div class="footer-layout">
+                <div class="footer-left">
+                  <div class="footer-col">
+                    <h3>Explore</h3>
+                    <ul>
+                      <li><a href="{{url_for('home.home_home')}}">Home</a></li>
+                      <li><a href="{{url_for('methodology.methodology_home')}}">Methodology</a></li>
+                      <li><a href="{{url_for('aboutUs.aboutUs_home')}}">About Us</a></li>
+                    </ul>
+                  </div>
+                  <div class="footer-col">
+                    <h3>Quick access</h3>
+                    <ul>
+                      <li><a href="{{url_for('user.login_home')}}">Login</a></li>
+                      <li><a href="{{url_for('user.register_home')}}">Register</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="footer-center">
+                  <h2>Carbon App</h2>
+                  <a class="footer-top-link" href="#page-top" aria-label="Back to top">
+                    <i class="fa-solid fa-chevron-up"></i>
+                  </a>
+                </div>
+
+                <div class="footer-right">
+                  <p>Track your transport footprint in minutes and start making lower-emission choices today.</p>
+                  <a class="footer-cta" href="{{url_for('carbon_app.carbon_app_home')}}">Try the Carbon App</a>
+                </div>
+              </div>
+
+              <!-- Bottom bar -->
+              <div class="footer__bottom">
+                <span style="color: black;">COPYRIGHT © CARBONGREEN </span>
+              </div>
             </div>
-
-            <!-- Bottom bar -->
-            <div class="footer__bottom">
-              <span style="color: black;">COPYRIGHT © CARBONGREEN </span>
-    
-            </div>
-
-
           </div>
         </section>
 

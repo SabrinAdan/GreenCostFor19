@@ -1,0 +1,160 @@
+{% extends "layout.html" %}
+{% block content %}
+
+
+<section class="bodyCarbon"> 
+
+    <!----------------- Left side ---------------------->
+    <div class="carbonInfo"> 
+         <!-- Info about the calculator -->
+        <div class="infoCal"> 
+            <h1> Carbon calculator </h1>
+            <p class="carbonDescription"> Estimate emissions by choosing a user type and transport method.</p>
+            <div> 
+                <button class="button">Your data</button>
+                <button class="button"> Methdology</button>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <!------------------ Right side -------------------->
+
+    <div class="calculatorPanel">
+        <div class="userType">
+            <p> Choose user type</p>
+            <div class="typeSwitch"> 
+                <button id="individual-btn" class="type-btn active" onclick="setUserType('individual')">
+                        Individual
+                </button>
+                <button id="business-btn" class="type-btn" onclick="setUserType('business')">
+                    Business
+                </button>
+            </div>
+        </div>
+
+        <div class="transportSection">
+            <p id="transportTitle"> Choose transport </p>
+            <!-- Individual -->
+             <div id="individualOptions" class="transportGrid">
+
+                <a href="{{ url_for('carbon_app.entry_home', user_type='individual', transport='car') }}" class="transportCard">
+                    <i class="bi bi-car-front"></i>
+                    <span> Car</span>
+                </a>
+
+                <a href="{{ url_for('carbon_app.entry_home', user_type='individual', transport='ferry') }}" class="transportCard">
+                    <i class="fa-solid fa-ferry"></i>
+                    <span> Ferry</span>
+                </a>
+
+                <a href="{{ url_for('carbon_app.entry_home', user_type='individual', transport='bus') }}" class="transportCard">
+                    <i class="fa-solid fa-bus"></i>
+                    <span>Bus</span>
+                </a>
+
+                <a href="{{ url_for('carbon_app.entry_home', user_type='individual', transport='plane') }}" class="transportCard">
+                    <i class="bi bi-airplane-engines"></i>
+                    <span> Plane</span>
+                </a>
+
+                <a href="{{ url_for('carbon_app.entry_home', user_type='individual', transport='train') }}" class="transportCard">
+                   <i class="bi bi-train-front"></i>
+                    <span> Train</span>
+                </a>
+
+                <a href="{{ url_for('carbon_app.entry_home', user_type='individual', transport='bybane') }}" class="transportCard">
+                    <i class="fa-solid fa-train-tram"></i>
+                    <span>Bybane</span>
+                </a>
+
+                <a href="{{ url_for('carbon_app.entry_home', user_type='individual', transport='motorcycle') }}" class="transportCard">
+                    <i class="fa-solid fa-motorcycle"></i>
+                    <span>Motorcycle</span>
+                </a>
+
+                <a href="{{ url_for('carbon_app.entry_home', user_type='individual', transport='bicycle') }}" class="transportCard">
+                    <i class="fa-solid fa-bicycle"></i>
+                    <span>Bicycle</span>
+                </a>
+
+                <a href="{{ url_for('carbon_app.entry_home', user_type='individual', transport='walking') }}" class="transportCard">
+                    <i class="fa-solid fa-person-walking"></i>
+                    <span>Walking</span>
+                </a>
+
+                
+
+             </div>
+
+            <!-- Business -->
+             <div id="businessOptions" class="transportGrid hidden">
+                <a href="{{ url_for('carbon_app.entry_home', user_type='business', transport='truck') }}" class="transportCard">
+                    <i class="bi bi-truck"></i>
+                    <span> Truck and Van </span>
+                </a>
+
+                <a href="{{ url_for('carbon_app.entry_home',  user_type='business', transport='cargo_plane') }}" class="transportCard">
+                    <i class="bi bi-airplane-engines"></i>
+                    <span> Cargo Plane </span>
+                </a>
+
+                <a href="{{ url_for('carbon_app.entry_home',  user_type='business', transport='rail') }}"class="transportCard">
+                     <i class="bi bi-train-front"></i>
+                    <span> Rail Freight </span>
+                </a>
+
+                <a href="{{ url_for('carbon_app.entry_home',  user_type='business', transport='maritime') }}" class="transportCard">
+                    <i class="bi bi-water"></i>
+                    <span> Maritime </span>
+                </a>
+
+                <a href="{{ url_for('carbon_app.entry_home',  user_type='business', transport='pipeline') }}" class="transportCard">
+                    <i class="fa-solid fa-wave-square"></i>
+                    <span>Pipeline</span>
+
+                </a>
+
+
+             </div>
+
+        </div>
+
+    </div>
+</section>
+
+<script> 
+    function setUserType(type){
+        const individualOptions=document.getElementById("individualOptions");
+        const businessOptions =document.getElementById("businessOptions");
+        const transportTitle = document.getElementById("transportTitle");
+        const individualBtn = document.getElementById("individual-btn");
+        const businessBtn = document.getElementById("business-btn");
+        
+
+        if(type === "individual"){
+            individualOptions.classList.remove("hidden");
+            businessOptions.classList.add("hidden");
+
+            individualBtn.classList.add("active");
+            businessBtn.classList.remove("active");
+
+            transportTitle.textContent = "Choose individual transport";
+
+        }else{
+            businessOptions.classList.remove("hidden");
+            individualOptions.classList.add("hidden");
+
+            businessBtn.classList.add("active");
+            individualBtn.classList.remove("active");
+
+            transportTitle.textContent = "Choose business transport";
+
+        }
+
+    }
+</script>
+    
+{% endblock content %}

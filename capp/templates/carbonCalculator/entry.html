@@ -1,0 +1,455 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section class="tranportLayout">
+
+    <!-- Info about usertype and transportation-->
+    <div class="entryHeader">
+        <p class="entryTag">{{ user_type|title }} transport</p>
+        <h1>{{ transport|replace('_', ' ')|title }} emissions calculator</h1>
+        <p class="entrySubtitle">Enter your transport details to estimate emissions.</p>
+    </div>
+
+    <div class="entryWrapper">
+        <!-- The form for transportation -->
+        <section class="entryInputForm">
+
+            <div class="containerTransportation">
+
+                <!-- Individual -->
+                {% if transport == "car" %}
+                    <div class="transportContainer">
+                        <h2>Car emissions</h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST"> 
+
+                            <div class="formGroup">
+                                <label for="kms">Kilometers</label>
+                                <input type="number" name="kms" placeholder="Enter distance in km" min="0">
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="fuel">Fuel type</label>
+                                <select name="fuel">
+                                    <option value="diesel">Diesel</option>
+                                    <option value="petrol">Petrol</option>
+                                    <option value="electric">Electric</option>
+                                </select>
+                            </div>
+
+                            <button class="submitBtn" type="submit">Calculate</button>
+                        </form>
+                    </div>
+                    
+                {% elif transport == "plane" %}
+                    <div class="transportContainer">
+                        <h2>Plane emissions</h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+
+                            <div class="formGroup">
+                                <label for="kms">Kilometers</label>
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                            </div>
+
+                            <div class="formGroup">
+                                <label>Flight type</label>
+                                <select name="flight_type">
+                                    <option value="domestic">Domestic</option>
+                                    <option value="international">International</option>
+                                </select>
+                            </div>
+                            <div class="formGroup">
+                                <select name="cabin_class">
+                                    <option value="economy">Economy</option>
+                                    <option value="business">Business</option>
+                                </select>
+                            </div>
+                            <div class="formGroup">
+                                <select name="aircraft_type">
+                                    <option value="small">Small</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="big">Big</option>
+                                </select>
+                            </div>
+
+                            <button class="submitBtn" type="submit">Calculate</button>
+                        </form>
+                    </div>
+
+                {% elif transport == "ferry" %}
+                    <div class="transportContainer">
+                        <h2>Ferry emissions</h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+
+                            <div class="formGroup">
+                                <label for="kms"> Kilometers</label>
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0"> 
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="ferry_type">Ferry type</label>
+                                <select name="ferry_type" id="ferry_type">
+                                    <option value="passenger">Passenger</option>
+                                    <option value="car_ferry">Car ferry</option>
+                                </select>
+                            </div>
+
+
+                            <button class="submitBtn" type="submit">Calculate</button>
+                        </form>
+                    </div>
+
+                {% elif transport == "bus" %}
+                    <div class="transportContainer">
+                        <h2>Bus emissions</h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+
+                            <div class="formGroup">
+                                <label for="kms"> Kilometers</label>
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0"> 
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="fuel">Fuel type</label>
+                                <select name="fuel" id="fuel">
+                                    <option value="diesel">Diesel</option>
+                                    <option value="electric">Electric</option>
+                                </select>
+                            </div>
+
+                            <button class="submitBtn" type="submit">Calculate</button>
+                        </form>
+                    </div>
+
+                {% elif transport == "train" %}
+                    <div class="transportContainer">
+                        <h2>Train emissions </h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+                            <div class="formGroup">
+                                <label for="kms">Kilometers</label>
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="train_type">Train type</label>
+                                <select name="train_type" id="train_type">
+                                    <option value="electric">Electric</option>
+                                    <option value="diesel">Diesel</option>
+
+                                </select>
+                            </div>
+
+                            <button class="submitBtn" type="submit">Calculate</button>
+
+                        </form>
+                    </div>
+
+                {% elif transport == "bybane" %}
+                    <div class="transportContainer">
+                        <h2>Bybane emissions </h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+                            <div class="formGroup">
+                                <label for="kms">Kilometers</label>
+                                <input type=nummer name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                            </div>
+
+
+                            <button class="submitBtn" type="submit">Calculate</button>
+                            
+                        </form>
+                    </div>
+
+                    
+
+
+                {% elif transport == "motorcycle" %}
+                    <div class="transportContainer">
+                        <h2>Motorcycle emissions</h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+                            <div class="formGroup">
+                                <label for="kms">Kilometers</label>
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="fuel">Fuel type</label>
+                                <select name="fuel" id="fuel">
+                                    <option value="petrol">Petrol</option>
+                                    <option value="electric">Electric</option>
+                                </select>
+                            </div>
+
+                            <button class="submitBtn" type="submit">Calculate</button>
+
+                        </form>
+                    </div>
+
+                    
+
+                {%elif transport == "bicycle"%}
+                    <div class="transportContainer">
+                        <h2>Bicycle emissions</h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+                            <div class="formGroup">
+                                <label for="kms">Kilometers</label>
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0"> 
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="bicycle_type">Bicycle type</label>
+                                <select name="bicycle_type" id="bicycle_type">
+                                    <option value="regular">Regular bicycle</option>
+                                    <option value="electric">Electric bicycle (e-bike)</option>
+                                </select>
+                            </div>
+
+                            <button class="submitBtn" type="submit">Calculate</button>
+                        </form>
+                    </div>
+
+                {%elif transport =="walking" %}
+                    <div class="transportContainer">
+                        <h2> Walking</h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+                            <div class="formGroup">
+                                <label for="kms">Kilometers</label>
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                            </div>
+
+
+                            <button class="submitBtn" type="submit">Calculate</button>
+                        </form>
+                    </div>
+
+                    
+                
+                    
+
+                <!---Business -->
+
+                {% elif transport == "truck" %}
+                    <div class="transportContainer">
+                        <h2>Truck emissions</h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+                            <div class="formGroup">          
+                                <label for="kms">Kilometers</label>
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                            </div>
+
+
+                            <div class="formGroup">
+                                <label for="load">Load (kg)</label>
+                                <input type="number" name="load" id="load" placeholder="Enter load in kg" min="0">
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="fuel">Fuel type</label>
+                                <select name="fuel" id="fuel">
+                                    <option value="diesel">Diesel</option>
+                                    <option value="biodiesel">Biodiesel</option>
+                                    <option value="electric">Electric</option>
+                                    <option value="hydrogen">Hydrogen</option>
+                                </select>
+                            </div>
+
+                            <button class="submitBtn" type="submit">Calculate</button>
+                        </form> 
+                    </div>
+    
+                {% elif transport == "cargo_plane" %}
+                    <div class="transportContainer">
+                        <h2> Cargo plane emissions</h2>
+                        <form class="transportForm" action= "{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+                            <div class="formGroup">
+                                <label for="kms">Kilometers</label>
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="cargo_weight"> Cargo weight (kg) </label>
+                                <input type="number" name="cargo_weight" id="cargo_weight" placeholder="Enter cargo weight in kg" min="0">
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="fuel">Fuel type</label>
+                                <select name="fuel" id="fuel">
+                                    <option value="jet_fuel">Jet fuel</option>
+                                    <option value="saf">Sustainable aviation fuel (SAF)</option>
+                                </select>
+                            </div>
+
+                            <button class="submitBtn" type="submit">Calculate</button>
+
+                        </form>
+                    </div>
+
+                {% elif transport == "rail" %}
+                    <div class="transportContainer">
+                        <h2> Rail Freight emissions</h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+                            <div class="formGroup">
+                                <label for="kms">Kilometers</label>
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                            </div>
+                            <div class="formGroup">
+                                <label for="cargo_weight"> Cargo weight (kg)</label>
+                                <input type="number" name="cargo_weight" id="cargo_weight" placeholder="Enter cargo weight in kg" min="0">
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="fuel">Rail type</label>
+                                <select name="fuel" id="fuel">
+                                    <option value="electric">Electric</option>
+                                    <option value="diesel">Diesel</option>
+                                </select>
+                            </div>
+                            
+                            <button class="submitBtn" type="submit">Calculate</button>
+                        </form>
+                    </div>
+
+                {% elif transport == "maritime" %}
+                    <div class="transportContainer">
+                        <h2> Maritime emissions</h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+                            <div class="formGroup">
+                                <label for="kms">Distance (km)</label>
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="cargo_weight">Cargo weight (kg)</label>
+                                <input type="number" name="cargo_weight" id="cargo_weight" placeholder="Enter cargo weight in kg" min="0">
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="fuel">Maritime type</label>
+                                <select name="fuel" id="fuel">
+                                    <option value="marine_diesel">Marine diesel</option>
+                                    <option value="lng">LNG</option>
+                                    <option value="biofuel">Biofuel</option>
+                                </select>
+                            </div>
+
+                            <button class="submitBtn" type="submit">Calculate</button>
+                        </form>
+                    </div>
+
+                {% elif transport == "pipeline" %}
+                    <div class="transportContainer">
+                        <h2>Pipeline emissions</h2>
+                        <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
+                            <div class="formGroup">
+                                <label for="volume">Volume transported</label>
+                                <input type="number" name="volume" id="volume" placeholder="e.g. 100 m³" min="0">
+                            </div>
+                            <div class="formGroup">
+                                <label for="distance">Distance (km)</label>
+                                <input type="number" name="distance" id="distance" placeholder="Enter distance in km">
+                            </div>
+
+                            <div class="formGroup">
+                                <label for="energy_source">Energy source</label>
+                                <select name="energy_source" id="energy_source">
+                                    <option value="electricity">Electricity</option>
+                                    <option value="fossil_energy">Fossil energy</option>
+                                </select>
+                            </div>
+                                    
+                                
+                            <button class="submitBtn" type="submit">Calculate</button>
+
+                        </form>
+                    </div>
+
+            
+                
+                {% endif %}
+
+            </div>
+            
+        </section> 
+
+
+        <!-- Explaination here-->
+
+        <section class="calMethodology">
+            <div class="methodologyCard">
+                <p class="methodTag">How this is calculated?</p>
+                <h2>{{ transport|replace('_', ' ')|title }} emissions</h2>
+
+                <p class="methodText">
+                    {% if transport == "car" %}
+                        Car emissions are estimated based on distance travelled and selected fuel type.
+                    {% elif transport == "plane" %}
+                        Plane emissions are estimated based on flight distance.
+                    {% elif transport == "ferry" %}
+                        Ferry emissions are estimated based on distance travelled and ferry category.
+                     {% elif transport == "bus" %}
+                        Bus emissions are estimated based on distance travelled and fuel type.
+                    {% elif transport == "train" %}
+                        Train emissions are estimated based on distance and train power source.
+                    {% elif transport == "bybane" %}
+                        Bybane emissions are estimated based on distance travelled.
+                    {% elif transport == "motorcycle" %}
+                        Motorcycle emissions are estimated based on distance and selected fuel type.
+                    {% elif transport == "bicycle" %}
+                        Bicycle emissions are usually very low and depend on bicycle type and distance.
+                    {% elif transport == "walking" %}
+                        Walking has no direct transport emissions, but distance can still be recorded.
+                    {% elif transport == "truck" %}
+                        Truck emissions are estimated based on distance, load, and fuel type.
+                    {% elif transport == "cargo_plane" %}
+                        Cargo plane emissions are estimated based on distance, cargo weight, and fuel type.
+                    {% elif transport == "rail" %}
+                        Rail freight emissions are estimated based on distance, cargo weight, and rail type.
+                    {% elif transport == "maritime" %}
+                        Maritime emissions are estimated based on distance, cargo weight, and fuel type.
+                    {% elif transport == "pipeline" %}
+                        Pipeline emissions are estimated based on transported volume, distance, and energy source.
+                    {% endif %}
+                </p>
+
+                <div class="methodInfo">
+                    <h3>Input factors</h3>
+                    <ul>
+
+                        <!--Individual-->
+                        {% if transport == "car" %}
+                            <li>Distance travelled</li>
+                            <li>Fuel type</li>
+                        {% elif transport == "plane" %}
+                            <li>Distance travelled</li>
+
+                        {% elif transport == "ferry" %}
+                            <li>Distance travelled</li>
+
+                        {% elif transport == "train" %}
+                            <li>Distance travelled</li>
+
+                        {% elif transport == "bybane" %}
+                            <li>Distance travelled</li>
+
+                        <!--Business-->
+                        {% elif transport == "truck" %}
+                            <li>Distance travelled</li>
+                            <li>Load</li>
+                            <li>Fuel type</li>
+                        {% elif transport == "cargo_plane" %}
+                            <li>Distance travelled</li>
+                            <li>Cargo weight</li>
+                            <li>Fuel type</li>
+                        {% elif transport == "pipeline" %}
+                            <li>Transported volume</li>
+                            <li>Distance</li>
+                            <li>Energy source</li>
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+</section>
+
+{% endblock content %}

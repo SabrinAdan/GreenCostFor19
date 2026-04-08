@@ -1,14 +1,167 @@
 {% extends "layout.html" %}
 {% block content %}
-  
-<!-- Header -->
-<section>
-    <div>
-  
-      Methodology
-      
+<section class="methodology-hero">
+  <div class="container">
+    <p class="methodology-kicker"></p>
+    <h1>How we estimate transport emissions</h1>
+    <p class="methodology-lead">
+      This calculator estimates transport emissions with transparent formulas and fixed
+      emission factors. The result is an approximation designed to compare transport choices.
+    </p>
+  </div>
+</section>
+
+<section class="methodology-overview">
+  <div class="container methodology-grid">
+    <article class="methodology-card">
+      <h3>Public transport</h3>
+      <p class="equation" aria-label="Public transport formula">
+        <span class="equation-symbol">CO<sub>2</sub></span>
+        <span class="equation-operator">=</span>
+        <span class="equation-term">Distance</span>
+        <span class="equation-operator">×</span>
+        <span class="equation-term">Emission factor</span>
+      </p>
+      <p class="formula-note">
+        Distance is entered in kilometers. Emission factors are expressed either as g/km
+        or g/passenger-km depending on transport mode.
+      </p>
+    </article>
+
+    <article class="methodology-card">
+      <h3>Private transport</h3>
+      <p class="equation" aria-label="Private transport formula">
+        <span class="equation-symbol">CO<sub>2</sub></span>
+        <span class="equation-operator">=</span>
+        <span class="equation-term">Distance</span>
+        <span class="equation-operator">×</span>
+        <span class="equation-fraction" role="math">
+          <span class="equation-top">Emission factor</span>
+          <span class="equation-bottom">Passenger</span>
+        </span>
+      </p>
+      <p class="formula-note">
+        For private modes, emissions are allocated per passenger.
+      </p>
+    </article>
+  </div>
+</section>
+
+<section class="methodology-section methodology-last-section">
+  <div class="container">
+    <h2>Emission factors</h2>
+
+    <div class="factor-grid">
+      <article class="factor-card">
+        <h3>Private transport</h3>
+        <div class="methodology-table-wrap">
+          <table class="methodology-table factor-table">
+            <thead>
+              <tr>
+                <th>Transport mode</th>
+                <th>Emission factor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Car (diesel)</td>
+                <td>229 g/km</td>
+              </tr>
+              <tr>
+                <td>Car (petrol)</td>
+                <td>198 g/km</td>
+              </tr>
+              <tr>
+                <td>Car (electric)</td>
+                <td>59 g/km</td>
+              </tr>
+              <tr>
+                <td>Motorcycle</td>
+                <td>95 g/km</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="factor-card">
+        <h3>Public transport</h3>
+        <div class="methodology-table-wrap">
+          <table class="methodology-table factor-table">
+            <thead>
+              <tr>
+                <th>Transport mode</th>
+                <th>Emission factor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Bybane</td>
+                <td>1.5 g/passenger-km</td>
+              </tr>
+              <tr>
+                <td>Bus (electric)</td>
+                <td>13 g/passenger-km</td>
+              </tr>
+              <tr>
+                <td>Bus (diesel)</td>
+                <td>30 g/passenger-km</td>
+              </tr>
+              <tr>
+                <td>Train (electric)</td>
+                <td>7 g/passenger-km</td>
+              </tr>
+              <tr>
+                <td>Train (diesel)</td>
+                <td>91 g/passenger-km</td>
+              </tr>
+              <tr>
+                <td>Airplane (economy)</td>
+                <td>127 g/passenger-km</td>
+              </tr>
+              <tr>
+                <td>Airplane (business)</td>
+                <td>284 g/passenger-km</td>
+              </tr>
+              <tr>
+                <td>Ferry (diesel)</td>
+                <td>186 g/passenger-km</td>
+              </tr>
+              <tr>
+                <td>Ferry (electric)</td>
+                <td>23 g/passenger-km</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="factor-card">
+        <h3>Walking &amp; cycling</h3>
+        <div class="methodology-table-wrap">
+          <table class="methodology-table factor-table">
+            <thead>
+              <tr>
+                <th>Transport mode</th>
+                <th>Emission factor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Walking</td>
+                <td>0 g/km</td>
+              </tr>
+              <tr>
+                <td>Cycling</td>
+                <td>0 g/km</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
     </div>
-</section> 
+  </div>
+</section>
 
 
 {% endblock content %}
