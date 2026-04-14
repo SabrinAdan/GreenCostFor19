@@ -11,8 +11,8 @@
             <h1> Carbon calculator </h1>
             <p class="carbonDescription"> Estimate emissions by choosing a user type and transport method.</p>
             <div> 
-                <button class="button">Your data</button>
-                <button class="button"> Methdology</button>
+                <a class="button" href="{{ url_for('carbon_app.results_home', user_type='individual') }}">Your data</a>
+                <a class="button" href="{{url_for('methodology.methodology_home')}}"> Methodology</a>
             </div>
 
         </div>

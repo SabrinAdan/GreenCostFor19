@@ -33,6 +33,7 @@
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='register.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='entry.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='results.css') }}">
       
     
 
@@ -51,29 +52,60 @@
          <div class="container"> 
             <div class="navbar">
               <h1 class="logo">
-                <span class="text-logo" style="color:teal"><i class="fa-solid fa-leaf"></i> Carbon</span> App
+                <a class="logo-link" href="{{url_for('home.home_home')}}">
+                  <span class="text-logo" style="color:teal"><i class="fa-solid fa-chart-line"></i> Carbon</span> App
+                </a>
               </h1>
               <nav>
                 <ul>
                     <li>
-                        <a href="{{url_for('home.home_home')}}">Home</a>
+                        <a class="menu-link" href="{{url_for('home.home_home')}}">
+                          <i class="fa-solid fa-house menu-icon"></i>
+                          Home
+                        </a>
                     </li>
                     <li>
-                        <a href="{{url_for('methodology.methodology_home')}}">Methology</a>
+                        <a class="menu-link" href="{{url_for('methodology.methodology_home')}}">
+                          <i class="fa-solid fa-book-open menu-icon"></i>
+                          Methodology
+                        </a>
                     </li>
                     <li>
-                        <a href="{{url_for('carbon_app.carbon_app_home')}}">Carbon App</a>
+                        <a class="menu-link" href="{{url_for('carbon_app.carbon_app_home')}}">
+                          <i class="fa-solid fa-chart-line menu-icon"></i>
+                          Carbon App
+                        </a>
                     </li>
             
                     <li>
-                      <a href="{{url_for('aboutUs.aboutUs_home')}}">About Us</a>
+                      <a class="menu-link" href="{{url_for('aboutUs.aboutUs_home')}}">
+                        <i class="fa-solid fa-users menu-icon"></i>
+                        About Us
+                      </a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                    <li>
+                      <a class="menu-link" href="{{url_for('user.register_home')}}">
+                        {{ current_user.username }}
+                      </a>
                     </li>
                     <li>
-                        <a href="{{url_for('user.register_home')}}"> <i class="fa-solid fa-user-plus"></i></a>
+                      <a class="menu-link" href="{{ url_for('user.logout') }}" class="menu-link">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                      </a>
+                    </li>
+                    {% else %}
+                    <li>
+                      <a href="{{ url_for('user.register_home') }}" class="menu-link">
+                        <i class="fa-solid fa-user-plus"></i>
+                      </a>
                     </li>
                     <li>
-                        <a href="{{url_for('user.login_home')}}"><i class="fa-solid fa-right-to-bracket"></i></a>
+                      <a href="{{ url_for('user.login_home') }}" class="menu-link">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                      </a>
                     </li>
+                    {% endif %}
                     
                 </ul>
               </nav> 

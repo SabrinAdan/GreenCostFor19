@@ -1,0 +1,247 @@
+{% extends "layout.html" %}
+{% block content %}
+
+<section class="resultsPage">
+
+    <div class="resultsHeader">
+        <div>
+            <p class="resultsTag">Dashboard</p>
+            <h1>Your Emissions Overview</h1>
+            <p class="resultsSubtitle">
+                Track your latest calculation, transport activity, and emission trends.
+            </p>
+        </div>
+
+        <div class="resultsActions">
+            <a href="{{ url_for('carbon_app.carbon_app_home') }}" class="secondaryBtn">New Calculation</a>
+        </div>
+    </div>
+    <!-- Choose between business or individual-->
+    <div class="resultsTypeToggle">
+        <a href="{{ url_for('carbon_app.results_home', user_type='individual') }}" class="toggleBtn {% if user_type == 'individual' %}active{% endif %}">
+            Individual
+        </a>
+
+        <a href="{{ url_for('carbon_app.results_home', user_type='business') }}" class="toggleBtn {% if user_type == 'business' %}active{% endif %}">
+            Business
+        </a>
+    </div>
+
+    <!-- The latest-->
+    <div class="kpiGrid">
+        <div class="kpiCard">
+            <p class="kpiLabel">Latest Result</p>
+            <h2>{{ results if results else 0 }} kg CO₂</h2>
+        </div>
+
+        <div class="kpiCard">
+            <p class="kpiLabel">Latest Transport</p>
+            <h2>{{ transport|replace('_', ' ')|title if transport else "-" }}</h2>
+        </div>
+
+        <div class="kpiCard">
+            <p class="kpiLabel">User Type</p>
+            <h2>{{ user_type|title if user_type else "-" }}</h2>
+        </div>
+
+        <div class="kpiCard">
+            <p class="kpiLabel">Entries</p>
+            <h2>{{ entries|length }}</h2>
+        </div>
+    </div>
+
+    
+
+    <!---- The charts starts her ---->
+    <div class="chartGrid">
+        <div class="chartCard">
+            <h3>Emissions by <span style="color: #0f766e">{{user_type}} transport</span> </h3>
+            <canvas id="emissionsByTransportChart"></canvas>
+        </div>
+
+        <div class="chartCard">
+            <h3>Kilometers by <span style="color: #0f766e">{{user_type}} transport</span></h3>
+            <canvas id="kmsByTransportChart"></canvas>
+        </div>
+
+        <div class="chartCard">
+            <h3>Emissions Over Time</h3>
+            <canvas id="emissionsOverTimeChart"></canvas>
+        </div>
+
+        <div class="chartCard">
+            <h3>Kilometers Over Time</h3>
+            <canvas id="kmsOverTimeChart"></canvas>
+        </div>
+    </div>
+
+    <div class="tableCard">
+        <div class="tableHeader">
+            <h3>Recent Entries</h3>
+            <p>Your latest transport calculations.</p>
+        </div>
+
+        <div class="tableWrapper">
+            <table class="resultsTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>User Type</th>
+                        <th>Transport</th>
+                        <th>Fuel</th>
+                        <th>Kilometers</th>
+                        <th>CO₂ (kg)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for entry in entries %}
+                        <tr>
+                            <td>{{ entry.created_at.strftime("%Y-%m-%d") }}</td>
+                            <td>{{ entry.user_type|title }}</td>
+                            <td>{{ entry.transport|replace('_', ' ')|title }}</td>
+                            <td>{{ entry.fuel if entry.fuel else "-" }}</td>
+                            <td>{{ entry.kms if entry.kms else "-" }}</td>
+                            <td>{{ entry.co2 }}</td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="6" class="emptyState">No entries yet.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+    const categories = {{ categories | tojson }};
+    const emissionTransport = {{ emission_transport | tojson }};
+    const kmsTransport = {{ kms_transport | tojson }};
+    const datesLabel = {{ dates_label | tojson }};
+    const overTimeEmissions = {{ over_time_emissions | tojson }};
+    const kmsDatesLabel = {{ kms_dates_label | tojson }};
+    const overTimeKms = {{ over_time_kms | tojson }};
+   
+    new Chart(document.getElementById('emissionsByTransportChart'), {
+        type: 'doughnut',
+        data: {
+            labels: categories.map(item => item.replaceAll('_', ' ').replace(/\b\w/g, c => c.toUpperCase())),
+            datasets: [{
+                label: 'CO₂ (kg)',
+                data: emissionTransport,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+    new Chart(document.getElementById('kmsByTransportChart'), {
+        type: 'bar',
+        data: {
+            labels: categories.map(item => item.replaceAll('_', ' ').replace(/\b\w/g, c => c.toUpperCase())),
+            datasets: [{
+                label: 'Kilometers',
+                data: kmsTransport,
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(document.getElementById('emissionsOverTimeChart'), {
+        type: 'line',
+        data: {
+            labels: datesLabel,
+            datasets: [{
+                label: 'CO₂ (kg)',
+                data: overTimeEmissions,
+                tension: 0.3,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(document.getElementById('kmsOverTimeChart'), {
+        type: 'line',
+        data: {
+            labels: kmsDatesLabel,
+            datasets: [{
+                label: 'Kilometers',
+                data: overTimeKms,
+                tension: 0.3,
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+
+
+
+    <!--
+    <section>
+        <div class="resultsToolbar">
+            <div class="toolbarLeft">
+                <h1>Results</h1>
+                <p>Monitor your transport emissions over time.</p>
+            </div>
+
+            <div class="toolbarRight">
+                <select name="period">
+                    <option>Last 7 days</option>
+                    <option>Last 30 days</option>
+                    <option>Last 90 days</option>
+                </select>
+
+                <select name="category">
+                    <option>All transport</option>
+                    <option>Car</option>
+                    <option>Bus</option>
+                    <option>Train</option>
+                    <option>Plane</option>
+                </select>
+            </div>
+        </div>
+
+    </section>
+
+</section>
+
+-->
+    
+{% endblock content %}

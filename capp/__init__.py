@@ -1,7 +1,31 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager
+from flask_bcrypt import Bcrypt
+import os
+
+
+db = SQLAlchemy()
+login_manager = LoginManager()
+
+
 application = Flask(__name__)
 
-application.config['SECRET_KEY'] = '7a567311e27e3eee2dffce8c23e7b2ae38774499e7373960'
+
+application.config['SECRET_KEY'] = os.environ.get('SECRET_KEY','dev-secret-key')
+#application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///user.db'
+#application.config['SQLALCHEMY_BINDS'] ={'transport': 'sqlite:///transport.db'}
+application.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
+application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+#application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+
+db.init_app(application)
+bcrypt = Bcrypt(application)
+login_manager.init_app(application)
+login_manager.login_view = 'users.login'
+login_manager.login_message_category = 'info'
+
 
 from capp.home.routes import home
 from capp.methodology.routes import methodology

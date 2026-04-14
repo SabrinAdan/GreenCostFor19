@@ -175,3 +175,20 @@
 .methodologyCard {
     height: 100%;
 }
+
+.login_warning{
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 10px;
+
+    background-color: rgba(0, 128, 128, 0.08); /* lys teal */
+    color: #0f766e; /* mørk teal */
+
+    font-size: 14px;
+    font-weight: 500;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+}

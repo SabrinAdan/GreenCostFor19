@@ -273,48 +273,16 @@ def entry_home():
 @carbon_app.route('/results')
 @login_required
 def results_home():
-    user_type = request.args.get("user_type", "individual")
+    results = request.args.get("results")
+    transport = request.args.get("transport")
+    user_type = request.args.get("user_type")
+    
     start_date = datetime.now() - timedelta(days=5)
-
-    entries = (
-        Transport.query
-        .filter_by(user_id=current_user.id, user_type=user_type)
-        .filter(Transport.created_at > start_date)
-        .order_by(Transport.created_at.desc())
-        .order_by(Transport.transport.asc())
-        .all()
-    )
-
-    latest_entry = (
-        Transport.query
-        .filter_by(user_id=current_user.id, user_type=user_type)
-        .order_by(Transport.created_at.desc())
-        .first()
-    )
-
-    latest_result = latest_entry.co2 if latest_entry else 0
-    latest_transport = latest_entry.transport if latest_entry else "-"
-
-    emissions_by_transport = (
-        db.session.query(func.sum(Transport.co2), Transport.transport)
-        .filter(Transport.user_id == current_user.id)
-        .filter(Transport.user_type == user_type)
-        .filter(Transport.created_at > start_date)
-        .group_by(Transport.transport)
-        .order_by(Transport.transport.asc())
-        .all()
-    )
-
-    kms_by_transport = (
-        db.session.query(func.sum(Transport.kms), Transport.transport)
-        .filter(Transport.user_id == current_user.id)
-        .filter(Transport.user_type == user_type)
-        .filter(Transport.created_at > start_date)
-        .group_by(Transport.transport)
-        .order_by(Transport.transport.asc())
-        .all()
-    )
-
+    
+    entries = Transport.query.filter_by(user_id=current_user.id).filter(Transport.created_at> (datetime.now() - timedelta(days=5))).order_by(Transport.created_at.desc()).order_by(Transport.transport.asc()).all()
+    
+    #Emissions by category
+    
     emissions_by_date = (
         db.session.query(func.sum(Transport.co2), func.date(Transport.created_at))
         .filter(Transport.user_id == current_user.id)
@@ -324,7 +292,26 @@ def results_home():
         .order_by(func.date(Transport.created_at).asc())
         .all()
     )
-
+    kms_by_transport = (
+        db.session.query(func.sum(Transport.kms), Transport.transport)
+        .filter(Transport.user_id == current_user.id)
+        .filter(Transport.user_type == user_type)
+        .filter(Transport.created_at > start_date)
+        .group_by(Transport.transport)
+        .order_by(Transport.transport.asc())
+        .all()
+    )
+    
+    emissions_by_transport = (
+        db.session.query(func.sum(Transport.co2), Transport.transport)
+        .filter(Transport.user_id == current_user.id)
+        .filter(Transport.user_type == user_type)
+        .filter(Transport.created_at > start_date)
+        .group_by(Transport.transport)
+        .order_by(Transport.transport.asc())
+        .all()
+    )
+    
     kms_by_date = (
         db.session.query(func.sum(Transport.kms), func.date(Transport.created_at))
         .filter(Transport.user_id == current_user.id)
@@ -334,21 +321,22 @@ def results_home():
         .order_by(func.date(Transport.created_at).asc())
         .all()
     )
-
+    
     categories = get_categories_for_user_type(user_type)
     emission_transport = build_chart_values(emissions_by_transport, categories)
     kms_transport = build_chart_values(kms_by_transport, categories)
-
+    
     dates_label = [str(date_value) for total, date_value in emissions_by_date]
     over_time_emissions = [float(total or 0) for total, date_value in emissions_by_date]
 
     kms_dates_label = [str(date_value) for total, date_value in kms_by_date]
     over_time_kms = [float(total or 0) for total, date_value in kms_by_date]
-
+    
+    
     return render_template(
         'carbonCalculator/results.html',
-        results=latest_result,
-        transport=latest_transport,
+        results=results,
+        transport=transport,
         user_type=user_type,
         entries=entries,
         categories=categories,

@@ -24,19 +24,25 @@
 
                             <div class="formGroup">
                                 <label for="kms">Kilometers</label>
-                                <input type="number" name="kms" placeholder="Enter distance in km" min="0">
+                                <input type="number" name="kms" placeholder="Enter distance in km" min="0" required>
                             </div>
 
                             <div class="formGroup">
                                 <label for="fuel">Fuel type</label>
-                                <select name="fuel">
+                                <select name="fuel" required>
+                                    <option value="" disabled selected>Select fuel</option>
                                     <option value="diesel">Diesel</option>
                                     <option value="petrol">Petrol</option>
                                     <option value="electric">Electric</option>
                                 </select>
                             </div>
-
+                            {% if current_user.is_authenticated %}
                             <button class="submitBtn" type="submit">Calculate</button>
+                            {% else %}
+                            <a class="submitBtn" href="{{ url_for('user.login_home') }}">Login to calculate</a>
+                            <p class="login_warning">Please log in to calculate emissions.</p>
+                            {% endif %}
+                            
                         </form>
                     </div>
                     
@@ -47,24 +53,29 @@
 
                             <div class="formGroup">
                                 <label for="kms">Kilometers</label>
-                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0" required>
                             </div>
 
                             <div class="formGroup">
-                                <label>Flight type</label>
-                                <select name="flight_type">
+                                <label for="flight_type">Flight type</label>
+                                <select name="flight_type" required>
+                                    <option value="" disabled selected>Select flight type</option>
                                     <option value="domestic">Domestic</option>
                                     <option value="international">International</option>
                                 </select>
                             </div>
                             <div class="formGroup">
-                                <select name="cabin_class">
+                                <label for="cabin_class">Cabin class</label>
+                                <select name="cabin_class" required>
+                                    <option value="" disabled selected>Select cabin class</option>
                                     <option value="economy">Economy</option>
                                     <option value="business">Business</option>
                                 </select>
                             </div>
                             <div class="formGroup">
-                                <select name="aircraft_type">
+                                <label for="aircraft_type">Aircraft size</label>
+                                <select name="aircraft_type" required>
+                                    <option value="" disabled selected>Select aircraft size</option>
                                     <option value="small">Small</option>
                                     <option value="medium">Medium</option>
                                     <option value="big">Big</option>
@@ -82,12 +93,13 @@
 
                             <div class="formGroup">
                                 <label for="kms"> Kilometers</label>
-                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0"> 
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0" required> 
                             </div>
 
                             <div class="formGroup">
                                 <label for="ferry_type">Ferry type</label>
-                                <select name="ferry_type" id="ferry_type">
+                                <select name="ferry_type" id="ferry_type" required>
+                                    <option value="" disabled selected>Select ferry type</option>
                                     <option value="passenger">Passenger</option>
                                     <option value="car_ferry">Car ferry</option>
                                 </select>
@@ -105,12 +117,13 @@
 
                             <div class="formGroup">
                                 <label for="kms"> Kilometers</label>
-                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0"> 
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0" required> 
                             </div>
 
                             <div class="formGroup">
                                 <label for="fuel">Fuel type</label>
-                                <select name="fuel" id="fuel">
+                                <select name="fuel" id="fuel" required>
+                                    <option value="" disabled selected>Select fuel</option>
                                     <option value="diesel">Diesel</option>
                                     <option value="electric">Electric</option>
                                 </select>
@@ -126,12 +139,13 @@
                         <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
                             <div class="formGroup">
                                 <label for="kms">Kilometers</label>
-                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0" required>
                             </div>
 
                             <div class="formGroup">
                                 <label for="train_type">Train type</label>
-                                <select name="train_type" id="train_type">
+                                <select name="train_type" id="train_type" required>
+                                    <option value="" disabled selected>Select train type</option>
                                     <option value="electric">Electric</option>
                                     <option value="diesel">Diesel</option>
 
@@ -149,7 +163,7 @@
                         <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
                             <div class="formGroup">
                                 <label for="kms">Kilometers</label>
-                                <input type=nummer name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                                <input type=nummer name="kms" id="kms" placeholder="Enter distance in km" min="0" required>
                             </div>
 
 
@@ -167,12 +181,13 @@
                         <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
                             <div class="formGroup">
                                 <label for="kms">Kilometers</label>
-                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0" required>
                             </div>
 
                             <div class="formGroup">
                                 <label for="fuel">Fuel type</label>
-                                <select name="fuel" id="fuel">
+                                <select name="fuel" id="fuel" required>
+                                    <option value="" disabled selected>Select fuel</option>
                                     <option value="petrol">Petrol</option>
                                     <option value="electric">Electric</option>
                                 </select>
@@ -191,12 +206,13 @@
                         <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
                             <div class="formGroup">
                                 <label for="kms">Kilometers</label>
-                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0"> 
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0" required> 
                             </div>
 
                             <div class="formGroup">
                                 <label for="bicycle_type">Bicycle type</label>
-                                <select name="bicycle_type" id="bicycle_type">
+                                <select name="bicycle_type" id="bicycle_type" required>
+                                    <option value="" disabled selected>Select bicycle type</option>
                                     <option value="regular">Regular bicycle</option>
                                     <option value="electric">Electric bicycle (e-bike)</option>
                                 </select>
@@ -212,7 +228,7 @@
                         <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
                             <div class="formGroup">
                                 <label for="kms">Kilometers</label>
-                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0" required>
                             </div>
 
 
@@ -232,18 +248,19 @@
                         <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
                             <div class="formGroup">          
                                 <label for="kms">Kilometers</label>
-                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0" required>
                             </div>
 
 
                             <div class="formGroup">
                                 <label for="load">Load (kg)</label>
-                                <input type="number" name="load" id="load" placeholder="Enter load in kg" min="0">
+                                <input type="number" name="load" id="load" placeholder="Enter load in kg" min="0" required>
                             </div>
 
                             <div class="formGroup">
                                 <label for="fuel">Fuel type</label>
-                                <select name="fuel" id="fuel">
+                                <select name="fuel" id="fuel" required>
+                                    <option value="" disabled selected>Select fuel</option>
                                     <option value="diesel">Diesel</option>
                                     <option value="biodiesel">Biodiesel</option>
                                     <option value="electric">Electric</option>
@@ -261,17 +278,18 @@
                         <form class="transportForm" action= "{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
                             <div class="formGroup">
                                 <label for="kms">Kilometers</label>
-                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0" required>
                             </div>
 
                             <div class="formGroup">
                                 <label for="cargo_weight"> Cargo weight (kg) </label>
-                                <input type="number" name="cargo_weight" id="cargo_weight" placeholder="Enter cargo weight in kg" min="0">
+                                <input type="number" name="cargo_weight" id="cargo_weight" placeholder="Enter cargo weight in kg" min="0" required>
                             </div>
 
                             <div class="formGroup">
                                 <label for="fuel">Fuel type</label>
-                                <select name="fuel" id="fuel">
+                                <select name="fuel" id="fuel" required>
+                                    <option value="" disabled selected>Select fuel</option>
                                     <option value="jet_fuel">Jet fuel</option>
                                     <option value="saf">Sustainable aviation fuel (SAF)</option>
                                 </select>
@@ -288,16 +306,17 @@
                         <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
                             <div class="formGroup">
                                 <label for="kms">Kilometers</label>
-                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0" required>
                             </div>
                             <div class="formGroup">
                                 <label for="cargo_weight"> Cargo weight (kg)</label>
-                                <input type="number" name="cargo_weight" id="cargo_weight" placeholder="Enter cargo weight in kg" min="0">
+                                <input type="number" name="cargo_weight" id="cargo_weight" placeholder="Enter cargo weight in kg" min="0" required>
                             </div>
 
                             <div class="formGroup">
                                 <label for="fuel">Rail type</label>
-                                <select name="fuel" id="fuel">
+                                <select name="fuel" id="fuel" required>
+                                    <option value="" disabled selected>Select fuel</option>
                                     <option value="electric">Electric</option>
                                     <option value="diesel">Diesel</option>
                                 </select>
@@ -313,17 +332,18 @@
                         <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
                             <div class="formGroup">
                                 <label for="kms">Distance (km)</label>
-                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0">
+                                <input type="number" name="kms" id="kms" placeholder="Enter distance in km" min="0" required>
                             </div>
 
                             <div class="formGroup">
                                 <label for="cargo_weight">Cargo weight (kg)</label>
-                                <input type="number" name="cargo_weight" id="cargo_weight" placeholder="Enter cargo weight in kg" min="0">
+                                <input type="number" name="cargo_weight" id="cargo_weight" placeholder="Enter cargo weight in kg" min="0" required>
                             </div>
 
                             <div class="formGroup">
                                 <label for="fuel">Maritime type</label>
-                                <select name="fuel" id="fuel">
+                                <select name="fuel" id="fuel" required>
+                                    <option value="" disabled selected>Select fuel</option>
                                     <option value="marine_diesel">Marine diesel</option>
                                     <option value="lng">LNG</option>
                                     <option value="biofuel">Biofuel</option>
@@ -340,16 +360,17 @@
                         <form class="transportForm" action="{{ url_for('carbon_app.entry_home', user_type=user_type, transport=transport) }}" method="POST">
                             <div class="formGroup">
                                 <label for="volume">Volume transported</label>
-                                <input type="number" name="volume" id="volume" placeholder="e.g. 100 m³" min="0">
+                                <input type="number" name="volume" id="volume" placeholder="e.g. 100 m³" min="0" required>
                             </div>
                             <div class="formGroup">
                                 <label for="distance">Distance (km)</label>
-                                <input type="number" name="distance" id="distance" placeholder="Enter distance in km">
+                                <input type="number" name="distance" id="distance" placeholder="Enter distance in km" required>
                             </div>
 
                             <div class="formGroup">
                                 <label for="energy_source">Energy source</label>
-                                <select name="energy_source" id="energy_source">
+                                <select name="energy_source" id="energy_source" required>
+                                    <option value="" disabled selected>Select energy source</option>
                                     <option value="electricity">Electricity</option>
                                     <option value="fossil_energy">Fossil energy</option>
                                 </select>
