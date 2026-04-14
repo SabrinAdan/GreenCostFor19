@@ -98,6 +98,9 @@ aircraft_factor = {
 individual_transports = ["car", "plane", "ferry", "bus","train", "bybane", "motorcycle","bicycle", "walking" ]
 business_transports = ["truck", "cargo_plane", "rail", "maritime", "pipeline"]
 
+
+
+
 def get_categories_for_user_type(user_type):
     if user_type == "business": 
         return business_transports
@@ -114,6 +117,34 @@ def build_chart_values(query_result, ordered_categories):
     return [values_by_category[category] for category in ordered_categories]
          
  
+ #####################
+ 
+alternatives_map = {
+     # Individual
+    "car": ["bus", "train", "bicycle", "walking", "bybane"],
+    "plane": ["train"],
+    "motorcycle": ["bus", "train", "bybane"],
+    "ferry": ["train", "bus"],
+    "bus": ["train", "bybane", "bicycle"],
+    "train": ["bus", "bybane", "bicycle"],
+    "bybane": ["bus", "train", "bicycle", "walking"],
+    "bicycle": ["walking", "bybane"],
+    "walking": ["bicycle", "bybane", "bus"],
+
+    # Business
+    "truck": ["rail", "maritime"],
+    "cargo_plane": ["rail", "maritime"],
+    "rail": ["truck", "maritime"],
+    "maritime": ["rail", "truck"],
+    "pipeline": ["rail"]
+}
+def get_alternatives(transport, user_type):
+    possible = alternatives_map.get(transport, [])
+
+    if user_type == "business":
+        return [t for t in possible if t in business_transports]
+    else:
+        return [t for t in possible if t in individual_transports]
 
 @carbon_app.route('/carbon_app')
 def carbon_app_home():
@@ -344,7 +375,30 @@ def results_home():
 
     kms_dates_label = [str(date_value) for total, date_value in kms_by_date]
     over_time_kms = [float(total or 0) for total, date_value in kms_by_date]
+    
+    #Alternatives 
+    
+    alternative_data = []
+    
+    if latest_entry: 
+        alternatives = get_alternatives(latest_transport, user_type)
+        
+        for alt in alternatives: 
+            if alt in efco2 and latest_entry.kms: 
+                factor_data = efco2[alt]
+                
+                if isinstance(factor_data, dict): 
+                    factor = list(factor_data.values())[0]
+                else: 
+                    factor = factor_data
+                    
+                alt_co2= (float(latest_entry.kms) *factor)/1000
+                savings = max(0, latest_entry.co2 - alt_co2)
+                
+                alternative_data.append({"transport": alt, "co2": round(alt_co2,2), "savings": round(savings,2)})
 
+    alternative_data = sorted(alternative_data, key=lambda x: x["co2"])
+    
     return render_template(
         'carbonCalculator/results.html',
         results=latest_result,
@@ -357,5 +411,16 @@ def results_home():
         dates_label=dates_label,
         over_time_emissions=over_time_emissions,
         kms_dates_label=kms_dates_label,
-        over_time_kms=over_time_kms
+        over_time_kms=over_time_kms, 
+        alternative_data=alternative_data
     )
+    
+    
+#Delete emission
+@carbon_app.route('/delete-emission/<int:entry_id>', methods=['POST'])
+def delete_emission(entry_id):
+    entry = Transport.query.get_or_404(int(entry_id))
+    db.session.delete(entry)
+    db.session.commit()
+    flash("Entry deleted", "success")
+    return redirect(url_for('carbon_app.results_home', user_type=entry.user_type))

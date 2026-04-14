@@ -54,20 +54,23 @@
     color: #0f766e;
     padding: 8px 14px;
     border-radius: 999px;
-    font-size: 14px;
+    font-size: 20px;
     font-weight: 600;
     margin-bottom: 12px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .resultsHeader h1 {
     font-size: 2.4rem;
     margin-bottom: 8px;
     color: #0f172a;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .resultsSubtitle {
     color: #64748b;
     max-width: 640px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .resultsActions {
@@ -97,13 +100,15 @@
 
 .kpiLabel {
     color: #64748b;
-    font-size: 0.95rem;
+    font-size: 1.1rem;
     margin-bottom: 10px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .kpiCard h2 {
     font-size: 1.8rem;
     color: #0f172a;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .chartGrid {
@@ -120,6 +125,7 @@
 .chartCard h3 {
     margin-bottom: 18px;
     color: #0f172a;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .tableCard {
@@ -133,10 +139,12 @@
 .tableHeader h3 {
     color: #0f172a;
     margin-bottom: 6px;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .tableHeader p {
     color: #64748b;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .tableWrapper {
@@ -158,6 +166,7 @@
 .resultsTable th {
     color: #475569;
     font-size: 0.95rem;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .resultsTable td {
@@ -183,6 +192,7 @@
     padding: 12px 18px;
     border-radius: 14px;
     font-weight: 600;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .primaryBtn {
@@ -194,6 +204,7 @@
     background: white;
     border: 1px solid #dbe3ea;
     color: #0f172a;
+    
 }
 
 
@@ -217,6 +228,7 @@
     text-decoration: none;
     font-weight: 600;
     transition: all 0.2s ease;
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .toggleBtn:hover {
@@ -228,4 +240,100 @@
     background: #0f8b8d;
     color: white;
     border-color: #0f8b8d;
+}
+
+
+/************Alternatives Section*****************/
+.alternativesSection {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.alternativesSection h3 {
+    font-size: 30px;
+    margin-bottom: 5px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.altSubtitle {
+    color: #6b7280;
+    margin-bottom: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.alternativesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+
+.altCard {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+
+.altCard:hover {
+    transform: translateY(-5px);
+}
+
+
+.altHeader h4 {
+    margin: 0;
+    font-size: 20px;
+    color: #111827;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.altBody {
+    margin-top: 10px;
+}
+
+.altBody p{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+
+.altSavings {
+    color: #16a34a; 
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+
+.emptyAlt {
+    color: #9ca3af;
+}
+
+
+.deleteBtn {
+    background: #ef4444;         
+    color: white;
+    border: none;
+    padding: 0.45rem 0.9rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.deleteBtn:hover {
+    background: #dc2626;     
+    transform: scale(1.05);
+}
+
+.deleteBtn:active {
+    transform: scale(0.95);
+}
+
+.deleteBtn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
 }

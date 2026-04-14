@@ -50,6 +50,33 @@
         </div>
     </div>
 
+    <!----- Alternatives ----->
+    <div class="alternativesSection">
+        <h3>Alternative Options</h3>
+        <p class="altSubtitle">Compare other transport options for the same trip. </p>
+
+        <div class="alternativesGrid">
+            {% for alt in alternative_data %}
+                <div class="altCard">
+                    <div class="altHeader">
+                        <h4>{{ alt.transport | replace('_', ' ') | title }}</h4>
+                    </div>
+
+                    <div class="altBody">
+                        <p><strong>{{ alt.co2 }} kg CO₂</strong></p>
+                        {% if alt.savings > 0 %}
+                        <p class="altSavings">Save {{ alt.savings }} kg CO₂</p>
+                        {% else %}
+                        <p class="altNeutral">No savings</p>
+                        {% endif %}
+                    </div>
+                </div>
+            {% else %}
+                <p class="emptyAlt">No alternatives available.</p>
+            {% endfor %}
+        </div>
+    </div>
+
     
 
     <!---- The charts starts her ---->
@@ -91,22 +118,28 @@
                         <th>Fuel</th>
                         <th>Kilometers</th>
                         <th>CO₂ (kg)</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for entry in entries %}
-                        <tr>
-                            <td>{{ entry.created_at.strftime("%Y-%m-%d") }}</td>
-                            <td>{{ entry.user_type|title }}</td>
-                            <td>{{ entry.transport|replace('_', ' ')|title }}</td>
-                            <td>{{ entry.fuel if entry.fuel else "-" }}</td>
-                            <td>{{ entry.kms if entry.kms else "-" }}</td>
-                            <td>{{ entry.co2 }}</td>
-                        </tr>
+                    <tr>
+                        <td>{{ entry.created_at.strftime("%Y-%m-%d") }}</td>
+                        <td>{{ entry.user_type|title }}</td>
+                        <td>{{ entry.transport|replace('_', ' ')|title }}</td>
+                        <td>{{ entry.fuel if entry.fuel else "-" }}</td>
+                        <td>{{ entry.kms if entry.kms else "-" }}</td>
+                        <td>{{ entry.co2 }}</td>
+                        <td>
+                            <form action="{{ url_for('carbon_app.delete_emission', entry_id=entry.id) }}" method="POST">
+                                <button type="submit" class="deleteBtn">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
                     {% else %}
-                        <tr>
-                            <td colspan="6" class="emptyState">No entries yet.</td>
-                        </tr>
+                    <tr>
+                        <td colspan="7" class="emptyState">No entries yet.</td>
+                    </tr>
                     {% endfor %}
                 </tbody>
             </table>
