@@ -82,13 +82,34 @@ img {
 .text-logo {
   color: #568c63;
 }
+
+/************************** Wave transition **************************************/
+
+.footer_wave{
+  line-height: 0;
+  margin-top: -120px;
+  width: 100%;
+  position: relative;
+  z-index: 2;
+ 
+}
+
+.footer_wave svg{
+  display: block;
+  width: 100%;
+  height: 140px;
+  background: transparent;
+}
+
+
+
 /*-------------------Footer----------------------------------------  */
 
 
 .footer {
   min-height: 250px;
   padding: 34px 0 14px;
-  background: var(--chrome-bg);
+  background: white;
 }
 
 .footer-layout {
@@ -206,6 +227,8 @@ img {
   color: rgba(255,255,255,0.6);
   text-transform: uppercase;
 }
+
+
 
 /* Media query */
 @media(max-width:768px){
