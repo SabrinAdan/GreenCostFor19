@@ -23,7 +23,7 @@ application.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(application)
 bcrypt = Bcrypt(application)
 login_manager.init_app(application)
-login_manager.login_view = 'user.login'
+login_manager.login_view = 'user.login_home'
 login_manager.login_message_category = 'info'
 
 
