@@ -47,22 +47,43 @@
         
     </head>
     <body id="page-top">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flashContainer">
+            {% for category, message in messages %}
+              <div class="flashMessage flash-{{ category }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
         <section class="section_navbar">
          <div class="container"> 
             <div class="navbar">
               <h1 class="logo">
                 <a class="logo-link" href="{{url_for('home.home_home')}}">
-                  <span class="text-logo" style="color:teal"><i class="fa-solid fa-chart-line"></i> Carbon</span> App
+                   <img src="{{ url_for('static', filename='icons/logobrand.png') }}" class="logoIcon">
+                  <span class="text-logo" style="color:teal"> Eco</span>Vera
                 </a>
               </h1>
               <nav>
                 <ul>
+                  {% if current_user.is_authenticated %}
+                    <li>
+                        <a class="menu-link" href="{{url_for('carbon_app.results_home')}}">
+                          <i class="fa-solid fa-table-cells"></i>
+                          Dashboard
+                        </a>
+                    </li>
+                    {% else %}
                     <li>
                         <a class="menu-link" href="{{url_for('home.home_home')}}">
                           <i class="fa-solid fa-house menu-icon"></i>
                           Home
                         </a>
                     </li>
+                    {% endif %}
                     <li>
                         <a class="menu-link" href="{{url_for('methodology.methodology_home')}}">
                           <i class="fa-solid fa-book-open menu-icon"></i>
@@ -113,6 +134,20 @@
         </section>
 
         {% block content %} {% endblock %}
+        <script>
+            setTimeout(() => {
+              const flashes = document.querySelectorAll('.flashMessage');
+              flashes.forEach(flash => {
+                flash.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                flash.style.opacity = '0';
+                flash.style.transform = 'translateY(-10px)';
+
+                setTimeout(() => {
+                  flash.remove();
+                }, 500);
+              });
+            }, 3000);
+        </script>
 
         <!-- A wave transition-->
         <div class="footer_wave">
@@ -133,7 +168,7 @@
                   <div class="footer-col">
                     <h3>Explore</h3>
                     <ul>
-                      <li><a href="{{url_for('home.home_home')}}">Home</a></li>
+                      <li><a href="{{url_for('carbon_app.carbon_app_home')}}">Carbon App</a></li>
                       <li><a href="{{url_for('methodology.methodology_home')}}">Methodology</a></li>
                       <li><a href="{{url_for('aboutUs.aboutUs_home')}}">About Us</a></li>
                     </ul>
@@ -148,7 +183,7 @@
                 </div>
 
                 <div class="footer-center">
-                  <h2>Carbon App</h2>
+                  <h2>Go up</h2>
                   <a class="footer-top-link" href="#page-top" aria-label="Back to top">
                     <i class="fa-solid fa-chevron-up"></i>
                   </a>
@@ -162,7 +197,7 @@
 
               <!-- Bottom bar -->
               <div class="footer__bottom">
-                <span style="color: black;">COPYRIGHT © CARBONGREEN </span>
+                <span style="color: black;">COPYRIGHT © ECOVERA </span>
               </div>
             </div>
           </div>

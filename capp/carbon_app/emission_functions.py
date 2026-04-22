@@ -1,79 +1,79 @@
-# Dict
-
 efco2 = {
-    # --------- Individual ------------
     "car": {
-        "diesel": 229,
-        "petrol": 198,
-        "electric": 59
+        "diesel": 158,
+        "petrol": 162,
+        "electric": 37,
     },
     "plane": {
-        "domestic": {
-            "economy": 186,
-            "business": 284,
-        },
-        "international": {
-            "economy": 186,
-            "business": 284,
-        },
+        "economy":90, # midpoint of 80–100
+        "business": 300, # midpoint of 200–400
     },
     "ferry": {
-        "passenger": 186,
-        "car_ferry": 23
+        "diesel": 200, # midpoint of 180–220
+        "lng":  158, # midpoint of 150–165
     },
     "bus": {
-        "diesel": 30,
-        "electric": 13,
+        "diesel": 102,
+        "electric": 21,
     },
     "train": {
         "diesel": 91,
         "electric": 7,
     },
     "bybane": {
-        "default": 1.5
+        "electric": 4,
     },
     "motorcycle": {
-        "petrol": 95,
-        "electric": 20
+        "petrol": 111,
+        "electric": 23,
     },
     "bicycle": {
-        "regular": 0,
-        "electric": 5
+        "regular": 9, # midpoint of 5–12
+        "electric": 18, # midpoint of 13-22
     },
     "walking": {
-        "default": 0
+        "default": 0,
     },
-
-    # ------ Business ------
     "truck": {
-        "diesel": 120,
-        "biodiesel": 100,
-        "electric": 40,
-        "hydrogen": 30
+        "diesel": 75,
+        "biodiesel": 32,
+        "electric": 18,
+        "hydrogen": 14,
+    },
+    "van":{
+        "diesel": 245,
+        "biodiesel": 104,
+        "electric": 48,
+        "hydrogen": 28,
     },
     "cargo_plane": {
-        "jet_fuel": 500,
-        "saf": 300
+        "dedicated":{
+            "jet_fuel": 602,
+            "saf": 102,
+        },
+        "belly": {
+            "jet_fuel": 410,
+        },
     },
     "rail": {
-        "electric": 15,
-        "diesel": 40
+        "electric": 6,
+        "diesel": 28,
     },
     "maritime": {
-        "marine_diesel": 80,
-        "lng": 60,
-        "biofuel": 40
+        "marine_diesel": 13, # midpoint of 10–15
+        "lng": 10,
+        "biofuel": 6,  # midpoint of 3–8
     },
     "pipeline": {
-        "electricity": 5,
-        "fossil_energy": 20
+        "electricity":  9, # midpoint of 7–10
+        "fossil_energy": 20, # midpoint of 15–25
     }
 }
 
 aircraft_factor = {
-    "small": 1.1,
-    "medium": 1.0,
-    "big": 0.9
+    "small": 1.67, # 150 / 90 ≈ economy small relative to base 90
+    "medium": 1.06, # 95 / 90
+    "big": 0.94,  # 85 / 90
 }
 
 
@@ -112,6 +112,7 @@ def carbon_emission(transport, form_data):
     flight_type = form_data.get("flight_type")
     cabin_class = form_data.get("cabin_class")
     aircraft_type = form_data.get("aircraft_type")
+    cargo_type = form_data.get("cargo_type")
     ferry_type = form_data.get("ferry_type")
     train_type = form_data.get("train_type")
     bicycle_type = form_data.get("bicycle_type")
@@ -122,7 +123,7 @@ def carbon_emission(transport, form_data):
         return calculate_basic_emission(kms, factor)
 
     elif transport == "plane":
-        base_factor = efco2["plane"][flight_type][cabin_class]
+        base_factor = efco2["plane"][cabin_class]
         plane_multiplier = aircraft_factor[aircraft_type]
         return calculate_plane_emission(kms, base_factor, plane_multiplier)
 
@@ -139,7 +140,7 @@ def carbon_emission(transport, form_data):
         return calculate_basic_emission(kms, factor)
 
     elif transport == "bybane":
-        factor = efco2["bybane"]["default"]
+        factor = efco2["bybane"][fuel]
         return calculate_basic_emission(kms, factor)
 
     elif transport == "motorcycle":
@@ -157,9 +158,13 @@ def carbon_emission(transport, form_data):
     elif transport == "truck":
         factor = efco2["truck"][fuel]
         return calculate_cargo_emission(kms, factor, load)
+    
+    elif transport == "van":
+        factor = efco2["van"][fuel]
+        return calculate_basic_emission(kms, factor)
 
     elif transport == "cargo_plane":
-        factor = efco2["cargo_plane"][fuel]
+        factor = efco2["cargo_plane"][cargo_type][fuel]
         return calculate_cargo_emission(kms, factor, cargo_weight)
 
     elif transport == "rail":

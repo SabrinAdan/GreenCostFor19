@@ -43,6 +43,7 @@
   text-align: center;
   color: white;
   padding: 0 20px;
+  font-family: 'Roboto', sans-serif;
   
 }
 
@@ -50,33 +51,12 @@
   margin-top: 40px;
 }
 
-.button{
-  padding: 12px 25px;
-  border-radius: 8px;
-  border: none;
-  background: teal;
-  color: white;
-  margin: 10px;
-  cursor: pointer;
-  width: 150px;
-  height: 70px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-}
-
-.button.second{
-  background: transparent;
-  border: 2px solid white;
-}
-
-.button:hover{
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 128, 128, 0.4);
-}
 
 .headerInfo h1{
   font-size: clamp(3rem, 6vw, 4.5rem);
   margin-bottom:20px;
   text-shadow: 0 10px 30px rgba(0,0,0,0.4);
+  font-family: 'Roboto', sans-serif;
   
 }
 
@@ -110,29 +90,43 @@
     /**#FFFFFF;*/
 }
 
-/*----------------------------------------------------*/
 
+/* ---------------------------------------------------*/
 .impactSection{
   position: relative;
   padding: 80px 0 120px;
   overflow: hidden;
-  background-image: url("static/icons/forest.jpg"); /* bytt til ditt bilde */
   background-size: cover;
   background-position: center;
 }
 
-/* grønn gradient overlay */
+.headline {
+  font-size: clamp(1.4rem, 4vw, 4.1rem);
+  line-height: 1.15;
+  font-weight: 700;
+  color: #1f2d2f;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+
+}
+
+.impactContentWrapper {
+  position: relative;
+  z-index: 2;
+}
+
 .impactOverlay{
   position: absolute;
   inset: 0;
   background: #f3f4f5;
-  z-index: 0;
+  z-index: 1;
 }
 
 /* innhold */
 .impactContent{
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: min(1100px, 92%);
   margin: 0 auto;
   display: grid;
@@ -140,6 +134,7 @@
   gap: 30px;
   align-items: stretch;
   padding-bottom: 90px; /* plass til wave */
+  padding-top: 50px;
 }
 
 .impactCard:hover{
@@ -206,18 +201,331 @@
 .impactWave{
   position: absolute;
   left: 0;
-  bottom: -1px;
+  bottom: 0;
   width: 100%;
   height: 180px;
   z-index: 2;
+  display: block;
 }
 
-/* responsiv */
-@media (max-width: 900px){
-  .impactContent{
-    grid-template-columns: 1fr;
+
+
+/******************** Understanding the carbon app *******************************/
+
+.howSection {
+  position: relative;
+  background: white;
+  padding: 110px 20px 200px;
+  overflow: hidden;
+}
+
+.howContainer {
+  width: min(1320px, 94%);
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.howHeader {
+  text-align: center;
+  max-width: 850px;
+  margin: 0 auto 70px;
+}
+
+.howTag {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #4f998f;
+  margin-bottom: 18px;
+}
+
+.howTitle {
+  font-size: clamp(2.4rem, 4vw, 4.2rem);
+  line-height: 1.15;
+  font-weight: 700;
+  color: #1f2d2f;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.howIntro {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: black;
+  max-width: 780px;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+}
+
+.howSteps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 26px;
+  align-items: start;
+}
+
+.howStep {
+  position: relative;
+}
+
+.howTop {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  margin-bottom: 22px;
+}
+
+.howCircle {
+  width: 66px;
+  height: 66px;
+  min-width: 66px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #8fb89f, #4f998f);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 28px rgba(79, 153, 143, 0.25);
+}
+
+.howCircle3{
+  background: #354a4f;
+  box-shadow: 0 10px 28px rgba(53, 74, 79, 0.25);
+}
+
+
+.howCard {
+  min-height: 340px;
+  border-radius: 28px;
+  padding: 42px 28px 34px;
+  box-shadow: 0 30px 50px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.howCard1{
+  background: #ffffff;
+  color: black;
+}
+
+.howCard2{
+  background: linear-gradient(145deg, #e3eeeb, #d6e4e0);
+  color: black;
+}
+
+.howCard3{
+  background: linear-gradient(145deg, #3e5559, #2f454a);
+  color: white;
+}
+
+.howCard4{
+  background: linear-gradient(145deg, #14969a, #0e7c80);
+  color: white;
+}
+
+.howIcon{
+  font-size: 3.1rem;
+  margin-bottom: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #6aa58b;
+}
+
+.howCard3 .howIcon,
+.howCard4 .howIcon {
+  color: #e7f4ee;
+}
+
+.howCard h3{
+  font-size: 1.9rem;
+  line-height: 1.25;
+  font-weight: 700;
+  margin-bottom: 20px;
+  font-family: 'Roboto', sans-serif;
+}
+
+.howCard p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+.howCard1 p {
+  color: black;
+}
+
+.howCard4 p,
+.howCard3 p {
+  color: rgba(255, 255, 255, 0.92);
+}
+
+
+/************* Video animation***************/
+.videoAnimation{
+  background:#f3f4f5 ;
+  margin-top: -40px;
+  padding: 20px 20px;
+  padding-top: 50px;
+}
+
+
+
+  @media (max-width: 768px) {
+
+  /******************** Header / Hero ************************/
+  .headerHome{
+    height: 85vh;
+    min-height: 650px;
   }
+
+  .containerHeader{
+    padding: 0 18px;
+    justify-content: center;
+  }
+
+  .headerInfo h1{
+    font-size: clamp(2.3rem, 9vw, 3.2rem);
+    line-height: 1.15;
+    margin-bottom: 16px;
+  }
+
+  .headerInfo p{
+    max-width: 320px;
+    font-size: 1rem;
+    line-height: 1.6;
+    margin: 0 auto 24px;
+  }
+
+  .ctaButtons{
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .custom-shape-divider-bottom-1772754136 svg{
+    height: 90px;
+  }
+
+  /**************** Impact section *************/
+  .impactSection{
+    padding: 60px 0 90px;
+  }
+
+  .headline{
+    font-size: clamp(2rem, 8vw, 2.8rem);
+    line-height: 1.2;
+    padding: 0 18px;
+    margin-bottom: 10px;
+  }
+
+  .impactContent{
+    width: min(100%, 92%);
+    gap: 20px;
+    padding-top: 30px;
+    padding-bottom: 60px;
+  }
+
   .impactCard{
-    padding: 35px;
+    padding: 28px 20px;
+    border-radius: 18px;
+  }
+
+  .impactCard h2{
+    font-size: 1.6rem;
+    margin-bottom: 14px;
+  }
+
+  .impactCard p{
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: 100%;
+  }
+
+  .impactWave{
+    height: 90px;
+  }
+
+  /******************** How section ************************/
+  .howSection{
+    padding: 70px 16px 110px;
+  }
+
+  .howHeader{
+    margin: 0 auto 40px;
+  }
+
+  .howTag{
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    margin-bottom: 14px;
+  }
+
+  .howTitle{
+    font-size: clamp(2rem, 8vw, 2.8rem);
+    line-height: 1.2;
+    margin-bottom: 16px;
+  }
+
+  .howIntro{
+    font-size: 1rem;
+    line-height: 1.7;
+    max-width: 100%;
+  }
+
+  .howSteps{
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .howTop{
+    margin-bottom: 12px;
+  }
+
+  .howCircle{
+    width: 54px;
+    height: 54px;
+    min-width: 54px;
+    font-size: 1.35rem;
+  }
+
+  .howCard{
+    min-height: auto;
+    padding: 28px 20px 26px;
+    border-radius: 20px;
+  }
+
+  .howIcon{
+    font-size: 2.2rem;
+    margin-bottom: 16px;
+  }
+
+  .howCard h3{
+    font-size: 1.45rem;
+    line-height: 1.3;
+    margin-bottom: 14px;
+  }
+
+  .howCard p{
+    font-size: 1rem;
+    line-height: 1.65;
+  }
+
+  /***************** Video section *******************/
+  .videoAnimation{
+    margin-top: -20px;
+    padding: 20px 14px 10px;
   }
 }
+  
+

@@ -1,9 +1,30 @@
 .resultsPage {
-    padding: 40px 60px;
-    background: #f8fafc;
+    padding: 10px 60px;
+    background: linear-gradient(
+    180deg,
+    #e3f5f4 0%,
+    #eef8f7 12%,
+    #f7f9f8 25%,
+    #f7f9f8 80%,
+    #f3f8f6 92%,
+    #eef6f2 100%
+    );
+    /*background: #f7f9f8;*/
     min-height: 100vh;
+    padding-bottom: 150px;
 }
 
+.dashboardHero {
+  position: relative;
+  background: linear-gradient(180deg, white, #f7f9f8);
+  height: 100px;
+}
+
+.heroWave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
 
 .resultsHeader {
     display: flex;
@@ -22,20 +43,20 @@
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 12px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .resultsHeader h1 {
     font-size: 2.4rem;
     margin-bottom: 8px;
     color: #0f172a;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .resultsSubtitle {
     color: #64748b;
     max-width: 640px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .resultsActions {
@@ -67,13 +88,13 @@
     color: #64748b;
     font-size: 1.1rem;
     margin-bottom: 10px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .kpiCard h2 {
     font-size: 1.8rem;
     color: #0f172a;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .chartGrid {
@@ -90,7 +111,7 @@
 .chartCard h3 {
     margin-bottom: 18px;
     color: #0f172a;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .tableCard {
@@ -104,12 +125,12 @@
 .tableHeader h3 {
     color: #0f172a;
     margin-bottom: 6px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .tableHeader p {
     color: #64748b;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .tableWrapper {
@@ -156,7 +177,7 @@
     padding: 12px 18px;
     border-radius: 14px;
     font-weight: 600;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .primaryBtn {
@@ -192,7 +213,7 @@
     text-decoration: none;
     font-weight: 600;
     transition: all 0.2s ease;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .toggleBtn:hover {
@@ -216,13 +237,13 @@
 .alternativesSection h3 {
     font-size: 30px;
     margin-bottom: 5px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 .altSubtitle {
     color: #6b7280;
     margin-bottom: 20px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -250,7 +271,7 @@
     margin: 0;
     font-size: 20px;
     color: #111827;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -259,7 +280,7 @@
 }
 
 .altBody p{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -300,4 +321,169 @@
 .deleteBtn:focus {
     outline: none;
     box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
+}
+
+/************** media***************/
+@media (max-width: 768px) {
+
+    .resultsPage {
+        padding: 20px 16px;
+        padding-bottom: 80px;
+    }
+
+    .dashboardHero {
+        height: 60px;
+    }
+
+    /* ---------------- Header ---------------- */
+
+    .resultsHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .resultsTag {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .resultsHeader h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .resultsSubtitle {
+        font-size: 0.95rem;
+        max-width: 100%;
+        line-height: 1.5;
+    }
+
+    .resultsActions {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ---------------- KPI cards ---------------- */
+
+    .kpiGrid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .kpiCard {
+        padding: 16px;
+    }
+
+    .kpiLabel {
+        font-size: 0.9rem;
+    }
+
+    .kpiCard h2 {
+        font-size: 1.3rem;
+    }
+
+    /* ---------------- Charts ---------------- */
+
+    .chartGrid {
+        grid-template-columns: 1fr; 
+        gap: 16px;
+        margin-bottom: 20px;
+    }
+
+    .chartCard {
+        padding: 18px;
+    }
+
+    .chartCard h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+    }
+
+    /* ---------------- Table ---------------- */
+
+    .tableCard {
+        padding: 18px;
+    }
+
+    .tableHeader h3 {
+        font-size: 1.2rem;
+    }
+
+    .tableHeader p {
+        font-size: 0.9rem;
+    }
+
+    .resultsTable th,
+    .resultsTable td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+
+    /* ---------------- Toggle ---------------- */
+
+    .resultsTypeToggle {
+        flex-direction: column;
+        gap: 10px;
+        margin: 20px 0;
+    }
+
+    .toggleBtn {
+        width: 100%;
+        min-width: unset;
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+
+    /* ---------------- Alternatives ---------------- */
+
+    .alternativesSection {
+        margin-top: 30px;
+    }
+
+    .alternativesSection h3 {
+        font-size: 22px;
+    }
+
+    .altSubtitle {
+        font-size: 0.95rem;
+    }
+
+    .alternativesGrid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .altCard {
+        padding: 16px;
+    }
+
+    .altHeader h4 {
+        font-size: 18px;
+    }
+
+    .altBody p {
+        font-size: 0.95rem;
+    }
+
+    .altSavings {
+        font-size: 0.9rem;
+    }
+
+    /* ---------------- Buttons ---------------- */
+
+    .deleteBtn {
+        width: 100%;
+        padding: 8px;
+        font-size: 0.8rem;
+    }
 }

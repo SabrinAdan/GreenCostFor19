@@ -71,99 +71,11 @@
 }
 
 
-/* ---------------- our mission----------------------*/
-
-.mission-section{
-  position: relative;      /* viktig: så skyene holder seg i denne seksjonen */
-  overflow: hidden;        /* så skyer ikke “stikker ut” */
-  background: #f8faf9;
-  padding: 120px 20px;
-}
-
-.missionh1{
-    text-align: center;
-    padding: 20px;
-}
-
-
-.mission{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 80px;
-}
-
-
-
-.boxAbout{
-    display: flex;
-    position: relative;
-    width: 400px;
-    height: 400px;
-    padding: 10px;
-    gap: 10px;
-    border-radius: 30px;
-    
-
-}
-
-.boxReduce{
-    background-color: white;
-    box-shadow: 0 10px 30px rgba(0, 128, 128, 0.4);
-}
-
-.gra{
-    position: absolute;
-    left:0;
-    top: 0;
-    width: 400px;
-    height: 150px;
-    background: linear-gradient(135deg, #1e8c86, #67c8a4);
-    text-align: center;
-    border-radius: 30px;
-    
-   
-}
-
-
-.box2{
-    background-color: white;
-    box-shadow: 0 10px 30px rgba(0, 128, 128, 0.4);
-}
-
-.box3{
-    background-color: white;
-    box-shadow: 0 10px 30px rgba(0, 128, 128, 0.4);
-}
-
-
-.line{
-    border: 1px solid teal;
-    margin-top: 80px;
-    
-}
-
-.headingMission{
-    text-align: center;
-    font-size: 24px;
-    color: teal;
-    font-weight: bold;
-    padding: 20px;
-}
-
-
-.missionParagraf{
-    color: black; 
-    text-align: center;
-    padding: 5px;
-    font-size: 20px;
-}
-
-
 /* ------------------ Why it matters -------------------*/
 .sectionWhy{
     border-top: 1px solid rgba(0,0,0,0.05);
     padding: 100px 0;
+    background: white;
 }
 .containerWhy{
     display: flex;
@@ -179,7 +91,7 @@
 }
 
 .infoWhy p{
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'Roboto', sans-serif;
     font-size: 20px;
     padding: 10px;
     line-height: 50px;
@@ -192,86 +104,259 @@
 
 /* --------------------Introduction ---------------*/
 
-.intro{
-    padding: 120px 20px;
-    background: #f8faf9;
+.developersContainer{
+    background: linear-gradient(
+	180deg,
+	#e3f5f4 0%,
+	#ffffff 75%,
+	#f0fbfb 85%,
+	#e8f8f7 93%,
+	#e3f5f4 100%
+	);
+    padding-bottom: 100px;
 }
 
-.devh1{
-    text-align:center;
+.devTitle{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
     padding: 20px;
-    font-size: 45px; 
-    font-weight: bold;
-    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.infoTeam{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.containerTeam{
+    display: flex;
+    align-items:stretch;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    padding: 40px;
+}
+
+.containerTeam > * {
+    flex: 0 1 calc(30% - 20px); /* 3 per row, accounting for the gap */
+}
+
+.boxCard{
+    width: 300px;
+    min-height: 400px;
+    border: 2px solid black; 
+    border-radius: 20px;
+    background-color: white;
+    box-shadow: 0px 10px 25px rgba(0,0,0,0.08);
+    padding: 20px;
 
 }
 
-.row{
-    display: flex; 
+.boxCard:hover{
+    box-shadow: 5px 10px #888888;
+}
+
+.profil{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.profil img{
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+
+.role{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+.bio{
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+
+}
+.linkedinIcon{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 10px;
+    font-size: 22px;
+    text-decoration: none;
+    margin-top: 15px;
+    padding: 8px 12px;
+    color: white;
+    background: #0a66c2;
+}
+
+
+.linkedinContainer{
+    display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap; 
-    gap: 30px;
 }
 
-.row1{
-    display: flex; 
-    align-items: center;
-    justify-content:center;
-    flex-wrap: wrap; 
-    gap: 15px;
-    padding: 15px;
+.profilTitle{
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
 }
 
-
-.dev, .dev1{
-  width: 280px;
-  height: auto;                
-  background: white;           
-  border-radius: 18px;
-  padding: 30px;
-  text-align: center;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-
-.dev:hover, .dev1:hover{
-  transform: translateY(-6px);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.12);
-}
-
-.dev img, .dev1 img{
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  display: block;
-  margin: 0 auto 18px;
-}
-
-
-.dev h3, .dev1 h3{
-  margin: 10px 0 6px;
-  font-size: 20px;
-  text-align: center;
-  font-weight: bold;
-  
-}
-
-.linkedIn{
-    width: 100px;
-    height: 50px;
-    border-radius: 10px;
-    background-color: teal;
-    color: white;
-    border-color: teal;
-}
-
-.linkedIn:hover{
-    background-color: lightseagreen;
-    color: black;
+.line{
+    border: 1px solid black;
+    margin: 40px auto;
+    width: 900px;
+    height: 1px;
+    background-color: #dcdcdc;
     
 }
 
+/*----------------- Wave -----------------------*/
 
+.dashboardHero {
+	position: relative;
+	height: 100px;
+}
+
+/*----------------- media -----------------------*/
+
+@media (max-width: 768px) {
+
+    .header{
+        min-height: 75vh;
+        background-position: center;
+        overflow: hidden;
+    }
+
+    .box-contantAbout{
+        display: flex;
+        padding: 0 20px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .abouth1{
+        font-size: 48px;
+        line-height: 1.1;
+        text-align: center;
+    }
+
+    .box-moreContentAbout{
+        padding: 0 20px;
+        margin-top: 15px;
+    }
+
+    .box-moreContentAbout p{
+        font-size: 18px;
+        line-height: 1.5;
+        text-shadow: 2px 2px 4px rgba(211, 211, 211, 0.6);
+    }
+
+    .cloud img{
+        max-width: 180px;
+        opacity: 0.5;
+    }
+
+    /* ------------------ Why it matters ------------------- */
+
+    .sectionWhy{
+        padding: 60px 20px;
+    }
+
+    .containerWhy{
+        flex-direction: column;
+        gap: 30px;
+        padding: 0;
+        text-align: center;
+    }
+
+    .picWhy{
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .infoWhy p{
+        font-size: 18px;
+        line-height: 1.8;
+        padding: 0;
+    }
+
+    .whyHead{
+        font-size: 30px;
+        margin-bottom: 15px;
+    }
+
+    /* -------------------- Introduction ------------------- */
+
+    .developersContainer{
+        padding: 60px 20px 80px;
+    }
+
+    .devTitle{
+        font-size: 30px;
+        padding: 10px;
+    }
+
+    .infoTeam{
+        font-size: 16px;
+        line-height: 1.6;
+        padding: 0 10px;
+    }
+
+    .containerTeam{
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+        padding: 30px 0;
+    }
+
+    .containerTeam > * {
+        flex: 1 1 100%;
+    }
+
+    .boxCard{
+        width: 100%;
+        max-width: 320px;
+        min-height: auto;
+        padding: 20px 15px;
+    }
+
+    .profil img{
+        width: 80px;
+        height: 80px;
+    }
+
+    .profilTitle{
+        font-size: 22px;
+    }
+
+    .role,
+    .bio{
+        font-size: 16px;
+        line-height: 1.6;
+    }
+
+    .linkedinIcon{
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        padding: 8px;
+    }
+
+    .line{
+        width: 90%;
+        margin: 30px auto;
+    }
+
+    /* ----------------- Wave ----------------------- */
+
+    .dashboardHero{
+        height: 60px;
+    }
+}

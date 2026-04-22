@@ -1,6 +1,13 @@
 {% extends "layout.html" %}
 {% block content %}
 
+<section class="dashboardHero">
+  <svg class="heroWave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path fill="#dff4f3"
+      d="M0,40 C200,80 400,0 700,30 C1000,60 1200,10 1440,40 L1440,120 L0,120 Z">
+    </path>
+  </svg>
+</section>
 <section class="resultsPage">
 
     <div class="resultsHeader">
@@ -148,8 +155,8 @@
 
 </section>
 
+{% block javascript %}
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
 
     const categories = {{ categories | tojson }};
@@ -244,4 +251,4 @@
 </script>
 
     
-{% endblock content %}
+{% endblock %}{% endblock content %}

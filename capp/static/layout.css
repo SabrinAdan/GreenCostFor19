@@ -53,7 +53,7 @@ img {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 70px;
+  height: 75px;
   align-items: center;
   padding: 0 0px;
 
@@ -81,6 +81,12 @@ img {
 }
 .text-logo {
   color: #568c63;
+}
+
+.logoIcon {
+  width: 55px;
+  height: 55px;
+  margin-top: -20px;
 }
 
 /************************** Wave transition **************************************/
@@ -227,6 +233,85 @@ img {
   color: rgba(255,255,255,0.6);
   text-transform: uppercase;
 }
+
+/**felles**/
+.entryTag {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: #d7f3ef;
+    color: #0f8b8d;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.button{
+  padding: 18px 25px;
+  border-radius: 8px;
+  border: none;
+  background: teal;
+  color: white;
+  margin: 10px;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.button.second{
+  background: transparent;
+  border: 2px solid white;
+}
+
+.button:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 128, 128, 0.4);
+  color:white;
+}
+
+
+/*******************************************************/
+
+.flashContainer {
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.flashMessage {
+  padding: 14px 20px;
+  border-radius: 12px;
+  color: white;
+  font-weight: 500;
+  min-width: 260px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+  animation: fadeIn 0.3s ease;
+}
+
+.flash-success {
+  background: #4CAF50;
+}
+
+.flash-danger {
+  background: #e74c3c;
+}
+
+.flash-warning {
+  background: #f39c12;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 
 

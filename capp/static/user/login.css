@@ -1,3 +1,17 @@
+.register_section_css{
+    background: linear-gradient(
+    180deg,
+    #e3f5f4 0%,
+    #f0fbfb 20%,
+    #ffffff 45%,
+    #f7f9f8 60%,
+    #ffffff 75%,
+    #e8f8f7 90%,
+    #e3f5f4 100%
+    );
+}
+
+
 .input-group input {
     padding: 10px;
     border: none;

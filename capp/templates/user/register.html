@@ -1,8 +1,19 @@
 {% extends "layout.html" %}
 {% block content %}
+
+
+<!-- Wave-->
+<section class="dashboardHero">
+  <svg class="heroWave" viewBox="0 0 1440 120" preserveAspectRatio="none">
+    <path fill="#e3f5f4"
+      d="M0,40 C200,80 400,0 700,30 C1000,60 1200,10 1440,40 L1440,120 L0,120 Z">
+    </path>
+  </svg>
+</section>
+
   
 <!-- Header -->
-<section class="register_section_css">
+<section class="register_section_css register">
     <div class="container">
     <header class="page-header">
         <form action="" method="POST">
@@ -70,7 +81,7 @@
             </div>
             <div class='border-top pt-3'>
                 <small>
-                    Already Have an Account? <a class="ml-5" href="{{url_for('user.login_home')}}">Sign in</a>
+                    Already Have an Account? <a class="ml-5" href="{{url_for('user.login_home')}}"><span style="color:teal">Sign in</span></a>
                 </small>
             </div>  
             </div>
