@@ -369,15 +369,6 @@
 }
 
 
-/************* Video animation***************/
-.videoAnimation{
-  background:#f3f4f5 ;
-  margin-top: -40px;
-  padding: 20px 20px;
-  padding-top: 50px;
-}
-
-
 
   @media (max-width: 768px) {
 
@@ -521,11 +512,7 @@
     line-height: 1.65;
   }
 
-  /***************** Video section *******************/
-  .videoAnimation{
-    margin-top: -20px;
-    padding: 20px 14px 10px;
-  }
+ 
 }
   
 
