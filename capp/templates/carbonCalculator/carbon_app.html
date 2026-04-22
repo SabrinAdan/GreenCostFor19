@@ -8,11 +8,11 @@
     <div class="carbonInfo"> 
          <!-- Info about the calculator -->
         <div class="infoCal"> 
-            <h1> Carbon calculator </h1>
+            <h1> Carbon Calculator </h1>
             <p class="carbonDescription"> Estimate emissions by choosing a user type and transport method.</p>
-            <div> 
-                <button class="button">Your data</button>
-                <button class="button"> Methdology</button>
+            <div class="buttonCarbon"> 
+                <a class="button" href="{{ url_for('carbon_app.results_home', user_type='individual') }}">Your data</a>
+                <a class="button" href="{{url_for('methodology.methodology_home')}}"> Methodology</a>
             </div>
 
         </div>
@@ -21,8 +21,9 @@
 
 
     <!------------------ Right side -------------------->
-
+    
     <div class="calculatorPanel">
+        {% if current_user.is_authenticated %}
         <div class="userType">
             <p> Choose user type</p>
             <div class="typeSwitch"> 
@@ -34,7 +35,6 @@
                 </button>
             </div>
         </div>
-
         <div class="transportSection">
             <p id="transportTitle"> Choose transport </p>
             <!-- Individual -->
@@ -93,7 +93,12 @@
              <div id="businessOptions" class="transportGrid hidden">
                 <a href="{{ url_for('carbon_app.entry_home', user_type='business', transport='truck') }}" class="transportCard">
                     <i class="bi bi-truck"></i>
-                    <span> Truck and Van </span>
+                    <span> Truck </span>
+                </a>
+
+                 <a href="{{ url_for('carbon_app.entry_home', user_type='business', transport='van') }}" class="transportCard">
+                    <i class="fa-solid fa-van-shuttle"></i>
+                    <span> Van </span>
                 </a>
 
                 <a href="{{ url_for('carbon_app.entry_home',  user_type='business', transport='cargo_plane') }}" class="transportCard">
@@ -114,17 +119,23 @@
                 <a href="{{ url_for('carbon_app.entry_home',  user_type='business', transport='pipeline') }}" class="transportCard">
                     <i class="fa-solid fa-wave-square"></i>
                     <span>Pipeline</span>
-
                 </a>
-
-
              </div>
-
         </div>
+        {% else %}
+        <!-- If you are not logged in, you will get a warning-->
+        <div class="loginWarning">
+            <br>
+            <p><strong>Create an account or log in to calculate and save your emissions.</strong></p>
+            <div class="loginActions">
+                <a href="{{ url_for('user.login_home') }}" class="loginBtn">Login</a>
+                <a href="{{ url_for('user.register_home') }}" class=" registerBtn">Register</a>
+            </div>
+        </div>
+        {% endif %}
 
     </div>
 </section>
-
 <script> 
     function setUserType(type){
         const individualOptions=document.getElementById("individualOptions");

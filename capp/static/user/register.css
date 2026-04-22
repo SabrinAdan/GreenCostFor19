@@ -1,0 +1,35 @@
+.register{
+    height: 800px;
+}
+
+.input-group input {
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #f0f0f0;
+    font-size: 14px;
+    width: 100%;         /* inputs stretch to fill the box */
+    box-sizing: border-box;
+    outline: none;
+}
+.input-box input:focus {
+    background-color: #e0e0e0;           /* slightly darker grey when active */
+}
+.input-group {
+    display: flex;
+    flex-direction: column;  /* stacks inputs on top of each other */
+    gap: 10px;               /* space between inputs */
+    padding: 30px;
+    border: 2px solid #2a4359;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    width: 500px;
+    position: sticky;
+    top: 70px;
+}
+.page-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}

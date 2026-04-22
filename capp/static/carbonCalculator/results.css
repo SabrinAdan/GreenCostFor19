@@ -1,0 +1,489 @@
+.resultsPage {
+    padding: 10px 60px;
+    background: linear-gradient(
+    180deg,
+    #e3f5f4 0%,
+    #eef8f7 12%,
+    #f7f9f8 25%,
+    #f7f9f8 80%,
+    #f3f8f6 92%,
+    #eef6f2 100%
+    );
+    /*background: #f7f9f8;*/
+    min-height: 100vh;
+    padding-bottom: 150px;
+}
+
+.dashboardHero {
+  position: relative;
+  background: linear-gradient(180deg, white, #f7f9f8);
+  height: 100px;
+}
+
+.heroWave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.resultsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.resultsTag {
+    display: inline-block;
+    background: #ccfbf1;
+    color: #0f766e;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.resultsHeader h1 {
+    font-size: 2.4rem;
+    margin-bottom: 8px;
+    color: #0f172a;
+    font-family: 'Roboto', sans-serif;
+}
+
+.resultsSubtitle {
+    color: #64748b;
+    max-width: 640px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.resultsActions {
+    display: flex;
+    gap: 12px;
+}
+
+.kpiGrid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    margin-bottom: 30px;
+}
+
+.kpiCard,
+.chartCard,
+.tableCard {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.kpiCard {
+    padding: 22px;
+}
+
+.kpiLabel {
+    color: #64748b;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.kpiCard h2 {
+    font-size: 1.8rem;
+    color: #0f172a;
+    font-family: 'Roboto', sans-serif;
+}
+
+.chartGrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.chartCard {
+    padding: 24px;
+}
+
+.chartCard h3 {
+    margin-bottom: 18px;
+    color: #0f172a;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tableCard {
+    padding: 24px;
+}
+
+.tableHeader {
+    margin-bottom: 18px;
+}
+
+.tableHeader h3 {
+    color: #0f172a;
+    margin-bottom: 6px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tableHeader p {
+    color: #64748b;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tableWrapper {
+    overflow-x: auto;
+}
+
+.resultsTable {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.resultsTable th,
+.resultsTable td {
+    text-align: left;
+    padding: 14px 12px;
+    border-bottom: 1px solid #eef2f7;
+}
+
+.resultsTable th {
+    color: #475569;
+    font-size: 0.95rem;
+}
+
+.resultsTable td {
+    color: #0f172a;
+}
+
+.resultsTable tr:hover {
+    background: #f8fafc;
+}
+
+.emptyState {
+    text-align: center;
+    color: #64748b;
+    padding: 24px;
+}
+
+.primaryBtn,
+.secondaryBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 14px;
+    font-weight: 600;
+    font-family: 'Roboto', sans-serif;
+}
+
+.primaryBtn {
+    background: #0f766e;
+    color: white;
+}
+
+.secondaryBtn {
+    background: white;
+    border: 1px solid #dbe3ea;
+    color: #0f172a;
+    
+}
+
+
+/**************************************************/
+.resultsTypeToggle {
+    display: flex;
+    gap: 14px;
+    margin: 24px 0 32px;
+}
+
+.toggleBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 160px;
+    padding: 14px 24px;
+    border-radius: 18px;
+    border: 1px solid #cbd5e1;
+    background: white;
+    color: #334155;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    font-family: 'Roboto', sans-serif;
+}
+
+.toggleBtn:hover {
+    border-color: #0f766e;
+    color: #0f766e;
+}
+
+.toggleBtn.active {
+    background: #0f8b8d;
+    color: white;
+    border-color: #0f8b8d;
+}
+
+
+/************Alternatives Section*****************/
+.alternativesSection {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.alternativesSection h3 {
+    font-size: 30px;
+    margin-bottom: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.altSubtitle {
+    color: #6b7280;
+    margin-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.alternativesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+
+.altCard {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: all 0.2s ease;
+}
+
+.altCard:hover {
+    transform: translateY(-5px);
+}
+
+
+.altHeader h4 {
+    margin: 0;
+    font-size: 20px;
+    color: #111827;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.altBody {
+    margin-top: 10px;
+}
+
+.altBody p{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+.altSavings {
+    color: #16a34a; 
+    font-weight: 500;
+    margin-top: 5px;
+}
+
+
+.emptyAlt {
+    color: #9ca3af;
+}
+
+
+.deleteBtn {
+    background: #ef4444;         
+    color: white;
+    border: none;
+    padding: 0.45rem 0.9rem;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.deleteBtn:hover {
+    background: #dc2626;     
+    transform: scale(1.05);
+}
+
+.deleteBtn:active {
+    transform: scale(0.95);
+}
+
+.deleteBtn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.3);
+}
+
+/************** media***************/
+@media (max-width: 768px) {
+
+    .resultsPage {
+        padding: 20px 16px;
+        padding-bottom: 80px;
+    }
+
+    .dashboardHero {
+        height: 60px;
+    }
+
+    /* ---------------- Header ---------------- */
+
+    .resultsHeader {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .resultsTag {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+
+    .resultsHeader h1 {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+
+    .resultsSubtitle {
+        font-size: 0.95rem;
+        max-width: 100%;
+        line-height: 1.5;
+    }
+
+    .resultsActions {
+        width: 100%;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .primaryBtn,
+    .secondaryBtn {
+        width: 100%;
+        text-align: center;
+    }
+
+    /* ---------------- KPI cards ---------------- */
+
+    .kpiGrid {
+        grid-template-columns: repeat(2, 1fr); 
+        gap: 12px;
+        margin-bottom: 20px;
+    }
+
+    .kpiCard {
+        padding: 16px;
+    }
+
+    .kpiLabel {
+        font-size: 0.9rem;
+    }
+
+    .kpiCard h2 {
+        font-size: 1.3rem;
+    }
+
+    /* ---------------- Charts ---------------- */
+
+    .chartGrid {
+        grid-template-columns: 1fr; 
+        gap: 16px;
+        margin-bottom: 20px;
+    }
+
+    .chartCard {
+        padding: 18px;
+    }
+
+    .chartCard h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
+    }
+
+    /* ---------------- Table ---------------- */
+
+    .tableCard {
+        padding: 18px;
+    }
+
+    .tableHeader h3 {
+        font-size: 1.2rem;
+    }
+
+    .tableHeader p {
+        font-size: 0.9rem;
+    }
+
+    .resultsTable th,
+    .resultsTable td {
+        padding: 10px 8px;
+        font-size: 0.85rem;
+    }
+
+    /* ---------------- Toggle ---------------- */
+
+    .resultsTypeToggle {
+        flex-direction: column;
+        gap: 10px;
+        margin: 20px 0;
+    }
+
+    .toggleBtn {
+        width: 100%;
+        min-width: unset;
+        padding: 12px;
+        font-size: 0.95rem;
+    }
+
+    /* ---------------- Alternatives ---------------- */
+
+    .alternativesSection {
+        margin-top: 30px;
+    }
+
+    .alternativesSection h3 {
+        font-size: 22px;
+    }
+
+    .altSubtitle {
+        font-size: 0.95rem;
+    }
+
+    .alternativesGrid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .altCard {
+        padding: 16px;
+    }
+
+    .altHeader h4 {
+        font-size: 18px;
+    }
+
+    .altBody p {
+        font-size: 0.95rem;
+    }
+
+    .altSavings {
+        font-size: 0.9rem;
+    }
+
+    /* ---------------- Buttons ---------------- */
+
+    .deleteBtn {
+        width: 100%;
+        padding: 8px;
+        font-size: 0.8rem;
+    }
+}

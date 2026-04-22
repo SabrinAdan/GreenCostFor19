@@ -26,13 +26,13 @@
       <!-- CSS code -->
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='layout.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='carbon_app.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='carbonCalculator/carbon_app.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='methodology.css') }}">
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='user.css') }}">
       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='aboutUs.css') }}">
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}">
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='register.css') }}">
-      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='entry.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='user/login.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='user/register.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='carbonCalculator/entry.css') }}">
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='carbonCalculator/results.css') }}">
       
     
 
@@ -47,33 +47,85 @@
         
     </head>
     <body id="page-top">
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="flashContainer">
+            {% for category, message in messages %}
+              <div class="flashMessage flash-{{ category }}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
         <section class="section_navbar">
          <div class="container"> 
             <div class="navbar">
               <h1 class="logo">
-                <span class="text-logo" style="color:teal"><i class="fa-solid fa-leaf"></i> Carbon</span> App
+                <a class="logo-link" href="{{url_for('home.home_home')}}">
+                   <img src="{{ url_for('static', filename='icons/logobrand.png') }}" class="logoIcon">
+                  <span class="text-logo" style="color:teal"> Eco</span>Vera
+                </a>
               </h1>
               <nav>
                 <ul>
+                  {% if current_user.is_authenticated %}
                     <li>
-                        <a href="{{url_for('home.home_home')}}">Home</a>
+                        <a class="menu-link" href="{{url_for('carbon_app.results_home')}}">
+                          <i class="fa-solid fa-table-cells"></i>
+                          Dashboard
+                        </a>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a class="menu-link" href="{{url_for('home.home_home')}}">
+                          <i class="fa-solid fa-house menu-icon"></i>
+                          Home
+                        </a>
+                    </li>
+                    {% endif %}
+                    <li>
+                        <a class="menu-link" href="{{url_for('methodology.methodology_home')}}">
+                          <i class="fa-solid fa-book-open menu-icon"></i>
+                          Methodology
+                        </a>
                     </li>
                     <li>
-                        <a href="{{url_for('methodology.methodology_home')}}">Methology</a>
-                    </li>
-                    <li>
-                        <a href="{{url_for('carbon_app.carbon_app_home')}}">Carbon App</a>
+                        <a class="menu-link" href="{{url_for('carbon_app.carbon_app_home')}}">
+                          <i class="fa-solid fa-chart-line menu-icon"></i>
+                          Carbon App
+                        </a>
                     </li>
             
                     <li>
-                      <a href="{{url_for('aboutUs.aboutUs_home')}}">About Us</a>
+                      <a class="menu-link" href="{{url_for('aboutUs.aboutUs_home')}}">
+                        <i class="fa-solid fa-users menu-icon"></i>
+                        About Us
+                      </a>
+                    </li>
+                    {% if current_user.is_authenticated %}
+                    <li>
+                      <a class="menu-link" href="{{url_for('user.register_home')}}">
+                        {{ current_user.username }}
+                      </a>
                     </li>
                     <li>
-                        <a href="{{url_for('user.register_home')}}"> <i class="fa-solid fa-user-plus"></i></a>
+                      <a class="menu-link" href="{{ url_for('user.logout') }}" class="menu-link">
+                        <i class="fa-solid fa-right-from-bracket"></i>
+                      </a>
+                    </li>
+                    {% else %}
+                    <li>
+                      <a href="{{ url_for('user.register_home') }}" class="menu-link">
+                        <i class="fa-solid fa-user-plus"></i>
+                      </a>
                     </li>
                     <li>
-                        <a href="{{url_for('user.login_home')}}"><i class="fa-solid fa-right-to-bracket"></i></a>
+                      <a href="{{ url_for('user.login_home') }}" class="menu-link">
+                        <i class="fa-solid fa-right-to-bracket"></i>
+                      </a>
                     </li>
+                    {% endif %}
                     
                 </ul>
               </nav> 
@@ -82,16 +134,41 @@
         </section>
 
         {% block content %} {% endblock %}
+        <script>
+            setTimeout(() => {
+              const flashes = document.querySelectorAll('.flashMessage');
+              flashes.forEach(flash => {
+                flash.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                flash.style.opacity = '0';
+                flash.style.transform = 'translateY(-10px)';
 
+                setTimeout(() => {
+                  flash.remove();
+                }, 500);
+              });
+            }, 3000);
+        </script>
+
+        <!-- A wave transition-->
+        <div class="footer_wave">
+          <svg viewBox="0 0 1440 220" preserveAspectRatio="none">
+            <path fill="#ffffff" d="M0,160 C180,120 360,200 540,170 C720,140 900,60 1080,90 C1260,120 1350,180 1440,160 L1440,220 L0,220 Z">
+            </path>
+          </svg>
+        </div>
+      
+
+
+        <!-- Footer-->
         <section class="section_footer">
-          <div class="container">
+          <div class="cocntainer">
             <div class="footer">
               <div class="footer-layout">
                 <div class="footer-left">
                   <div class="footer-col">
                     <h3>Explore</h3>
                     <ul>
-                      <li><a href="{{url_for('home.home_home')}}">Home</a></li>
+                      <li><a href="{{url_for('carbon_app.carbon_app_home')}}">Carbon App</a></li>
                       <li><a href="{{url_for('methodology.methodology_home')}}">Methodology</a></li>
                       <li><a href="{{url_for('aboutUs.aboutUs_home')}}">About Us</a></li>
                     </ul>
@@ -106,7 +183,7 @@
                 </div>
 
                 <div class="footer-center">
-                  <h2>Carbon App</h2>
+                  <h2>Go up</h2>
                   <a class="footer-top-link" href="#page-top" aria-label="Back to top">
                     <i class="fa-solid fa-chevron-up"></i>
                   </a>
@@ -120,7 +197,7 @@
 
               <!-- Bottom bar -->
               <div class="footer__bottom">
-                <span style="color: black;">COPYRIGHT © CARBONGREEN </span>
+                <span style="color: black;">COPYRIGHT © ECOVERA </span>
               </div>
             </div>
           </div>

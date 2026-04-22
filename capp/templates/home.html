@@ -1,15 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<!-- Header -->
- <!--
-<section class="section_header_home_video">
-      <video class="header-video" autoplay muted loop playsinline>
-          <source src="{{ url_for('static', filename='icons/HomePageVideo.mp4') }}" type="video/mp4">
-      </video>
-</section>
--->
-
 <!--------- HEADER---------->
 <section class="headerHome"> 
   <video class="header-video" autoplay muted loop playsinline>
@@ -25,8 +16,8 @@
     </div>
 
     <div class="ctaButtons"> 
-      <button class="button">Get started</button>
-      <button class="button second">Learn more</button>
+      <a class="button" href="{{url_for('carbon_app.carbon_app_home')}}">Get started</a>
+      <a class="button second" href="{{url_for('methodology.methodology_home')}}">Learn more</a>
     </div>
   </div>
 
@@ -44,22 +35,24 @@
 <section class="impactSection">
   <div class="impactOverlay"></div>
 
-  <div class="impactContent">
-    <div class="impactCard impactCard--light">
-      <h3>Measure</h3>
-      <p>Calculate emissions across your business operations in one place.</p>
-    </div>
+  <div class="impactContentWrapper"> 
+    <h1 class="headline">  Take Control of Your Emissions </h1>
+    <div class="impactContent">
+      <div class="impactCard impactCard--light">
+        <h3>Measure</h3>
+        <p>Calculate emissions across your business operations in one place.</p>
+      </div>
 
-    <div class="impactCard impactCard--dark">
-      <h3>Analyse</h3>
-      <p>Get clear insights into the sources of your company’s carbon footprint</p>
-      
-    </div>
+      <div class="impactCard impactCard--dark">
+        <h3>Analyse</h3>
+        <p>Get clear insights into the sources of you and your company’s carbon footprint</p>
+      </div>
 
-    <div class="impactCard impactCard-med">
-      <h3>Reduce</h3>
-      <p>Reduce emissions and avoid potential carbon taxes and compliance risks.</p>
+      <div class="impactCard impactCard-med">
+        <h3>Reduce</h3>
+        <p>Reduce emissions and avoid potential carbon taxes and compliance risks.</p>
 
+      </div>
     </div>
   </div>
 
@@ -72,28 +65,108 @@
 </section>
 
 
-
 <!--------------Understanding the carbon app ----------------->
-<section>
+<section class="howSection">
+  <div class="howContainer">
+    <div class="howHeader">
+      <p class="howTag">HOW IT WORKS</p>
+      <h2 class="howTitle">Your journey to lower emissions</h2>
+      <p class="howIntro">
+        Follow four simple steps to measure your transport footprint and make smarter,
+        lower-emission choices.
+      </p>
+    </div>
+
+    <div class="howSteps">
+      <!-- Step 1 -->
+      <div class="howStep">
+        <div class="howTop">
+          <div class="howCircle">1</div>
+        </div>
+
+        <div class="howCard howCard1">
+          <div class="howIcon">
+            <i class="fa-solid fa-user-tie"></i>
+            <i class="fa-solid fa-briefcase"></i>
+          </div>
+          <h3>Select user type</h3>
+          <p>Choose between Individual or Business.</p>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="howStep">
+        <div class="howTop">
+          <div class="howCircle">2</div>
+        </div>
+
+        <div class="howCard howCard2">
+          <div class="howIcon">
+            <i class="fa-solid fa-car"></i>
+          </div>
+          <h3>Choose your transport</h3>
+          <p>Select the travel option that matches your journey.</p>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="howStep">
+        <div class="howTop">
+          <div class="howCircle howCircle3">3</div>
+        </div>
+
+        <div class="howCard howCard3">
+          <div class="howIcon">
+            <i class="fa-solid fa-chart-column"></i>
+            <i class="fa-solid fa-calculator"></i>
+          </div>
+          <h3>Calculate emissions</h3>
+          <p>Get an instant CO₂ estimate based on your choices.</p>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="howStep">
+        <div class="howTop">
+          <div class="howCircle">4</div>
+        </div>
+
+        <div class="howCard howCard4">
+          <div class="howIcon">
+            <i class="fa-solid fa-seedling"></i>
+          </div>
+          <h3>Improve your impact</h3>
+          <p>Explore smarter alternatives and lower-emission choices.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <svg class="impactWave" viewBox="0 0 1440 220" preserveAspectRatio="none">
+    <path fill="#f3f4f5"
+      d="M0,160 C180,120 360,200 540,170 C720,140 900,60 1080,90 C1260,120 1350,180 1440,160 L1440,220 L0,220 Z">
+    </path>
+  </svg>
 
 </section>
 
-<!-------------------------- --------------------------->
-<section> 
+   
+
+<!--------------------------Video animation --------------------------->
+<section class="videoAnimation"> 
+   
+
+   <div class="howHeader">
+      <h2 class="howTitle">See It In Action</h2>
+      <p class="howIntro">
+        Watch how easy it is to track, understand, and reduce your emissions.
+      </p>
+    </div>
 
 </section>
 
 
-<!------------------------ ----------------------->
-<section> 
 
-</section>
-
-
-<!------------------- ---------------------------->
-<section>
-
-</section>
 
 
 
