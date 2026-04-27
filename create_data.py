@@ -1,4 +1,5 @@
-from capp import db
+from capp import db,application
 
-db.create_all()
+with application.app_context():
+   db.create_all()
     
