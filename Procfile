@@ -1,1 +1,1 @@
-web: gunicorn capp:application
+web: gunicorn application:application
